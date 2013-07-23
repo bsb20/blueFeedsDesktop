@@ -3,7 +3,7 @@ session_start();
 date_default_timezone_set("America/New_York");
 $table="`test`.`students`";
 $table2="`test`.`appointments`";
-$db=new mysqli("127.0.0.1","root","devils","test",8889);
+$db=new mysqli("127.0.0.1","root","devils","test",3306);
 if($db->connect_errno){
     echo "FAILURE";
 }
@@ -46,10 +46,11 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 $_SESSION['appointments'] = $recentAppt;
 			
 $table="`test`.`comments`";
-$sql = "SELECT * FROM ".$table."WHERE `UUID`='$UUID' AND `GUID`='$GUID' ORDER BY date DESC";
+$sql = "SELECT * FROM ".$table."WHERE `UUID`='$UUID' ORDER BY date DESC";
 $result=$db->query($sql);
 $recentcomment2="";
 $formattedDate;
+
 for($i=0; $i<mysqli_num_rows($result); $i++){
 	if($row=mysqli_fetch_array($result)){
 		$title=$row["title"];
@@ -61,17 +62,15 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 		$formattedDate=date("m/d/y",$time);
 	}
 	$recentComment1="<h2>Most Recent Comment:</h2>
-					<br>
 					<div>
-						<h3>Description: </h3>					
-						<br>
+						<h3>$title: </h3>					
 						<p id='RecentCommentText'>
 							$text
 						</p>
 					</div>";
 	break;
 }
-$_SESSION["recentComment1"]=$recentComment1;	
+//$_SESSION["recentComment1"]=$recentComment1;	
 
 $table="`test`.`students`";
 $sql = "SELECT * FROM ".$table." WHERE `SUID`='$SUID';";
@@ -101,9 +100,17 @@ if($row=mysqli_fetch_array($result)){
 $_SESSION["recentComment2"]=$recentComment2;
 
 /* Populates the rss with the links from the xml file */
-$filepath = "/home/htdocs/desktop/bluefeedsTest.xml";
-$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
+$table="`test`.`feeds`";
+$UUID=$_SESSION["UUID"];
+$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID' OR `UUID`='a'";
+$result=$db->query($sql);
 $rss = "";
+for($i=0; $i<mysqli_num_rows($result); $i++){
+    if($row=mysqli_fetch_array($result)){
+	$url=$row["url"];
+    }
+$xml =simplexml_load_file($url);
+$limit=0;
 foreach($xml->channel->item as $item)
 {
 	$title = $item->title;
@@ -116,8 +123,13 @@ foreach($xml->channel->item as $item)
 							<p class='landing-news-title'><a href=$link target='_blank'>$title</a></p>			
 						</div>
 					</li>";
+    $limit++;
+    if($limit>5){
+        break;
+    }
 }
-$_SESSION['rss'] = $rss;
+}
+
 
 $table="`test`.`groups`";
 $table1="`test`.`courses`";
@@ -187,13 +199,14 @@ $_SESSION['buttons'] = $buttons;
 				<h3>This Week's Appointments</h3>
 				<ul>
 					<?php
-						if($_SESSION['appointments']=="")
+						
+						if($recentAppt=="")
 						{
 							echo "<p>You have no appointments this week.</p>";
 						}
 						else
 						{
-							echo $_SESSION['appointments'];
+							echo $recentAppt;
 						}
 					?>							
 				</ul>		
@@ -205,7 +218,7 @@ $_SESSION['buttons'] = $buttons;
 				<h3>Recent News</h3>
 				<ul class="landing-news" data-role="accordion">
 					<?php
-						echo $_SESSION['rss'];
+						echo $rss;
 					?>                    
                 </ul>
 				<p class="more-link">
@@ -213,8 +226,8 @@ $_SESSION['buttons'] = $buttons;
 				</p>
 			</div>
 			<div id="appointments">
-				<h3>Your Feedback</h3>
-				<p>Feedback goes here</p>
+				<h3>Recent Feedback</h3>
+				<p><?php echo $recentComment1?></p>
 			</div>
 		</div>
 	</body>
