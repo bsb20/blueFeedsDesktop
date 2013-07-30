@@ -22,7 +22,7 @@ $repeated=array();
                  $spec=$row["speciality"];
                  $SUID=$row["SUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
-                    <a href='#'>
+                    <a>
                     <h1>$name</h1>
                     <img src='$photo' class='imgTile'alt='getarealphone'/>
                     <p>$title, $spec</p>

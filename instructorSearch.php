@@ -21,7 +21,7 @@ $repeated=array();
                  $spec=$row["speciality"];
                  $UUID=$row["UUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
-                    <a href='#'>
+                    <a>
                     <h1>$name</h1>
                     <p>$title, $spec</p>
                     </a>
