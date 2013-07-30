@@ -7,6 +7,10 @@ if($db->connect_errno){
 }
 $user=$_POST["username"];
 $pass=$_POST["password"];
+if(strlen($user)==0 || strlen($pass)==0){
+    echo "Please enter a username or password";
+    return;
+}
 $sql = "SELECT * FROM ".$table." WHERE `user`='".$user."';";
 $result=$db->query($sql);
 if($row=mysqli_fetch_array($result) and $row["pass"]==md5($pass,FALSE)){

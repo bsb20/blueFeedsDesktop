@@ -1,12 +1,7 @@
 <?php
-session_start();
-date_default_timezone_set("America/New_York");
+include("initialize.php");
 $table="`test`.`students`";
 $table2="`test`.`appointments`";
-$db=new mysqli("127.0.0.1","root","devils","test",3306);
-if($db->connect_errno){
-    echo "FAILURE";
-}
 $GUID=$_SESSION["GUID"];
 $UUID=$_SESSION["UUID"];
 $final="";
