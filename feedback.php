@@ -185,7 +185,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('#navbar-Courses').css('background-color','rgba(38,65,108,1)');
+				$('#navbar-Feedback').css('background-color','rgba(38,65,108,1)');
 			});
 		</script>
 	</head>
@@ -194,7 +194,7 @@
 			<h1>BlueFeeds</h1>
 		</div>
 		<div id="page-title">
-			<h2>Courses</h2>
+			<h2>Feedback</h2>
 		</div>
 		<div id="container">
 			<div id="navbar">
@@ -203,10 +203,10 @@
 						<a href="home.php">Home</a>
 					</li>
 					<li id="navbar-Appointments">
-						<a href="appointments.php">Appointments
+						<a href="appointments.php">Appointments</a>
 					</li>
-					<li id="navbar-Courses">
-						Courses
+					<li id="navbar-Feedback">
+						Feedback
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>

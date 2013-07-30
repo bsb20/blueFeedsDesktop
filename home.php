@@ -187,8 +187,8 @@ $_SESSION['buttons'] = $buttons;
 					<li id="navbar-Appointments">
 						<a href="appointments.php">Appointments</a>
 					</li>
-					<li id="navbar-Courses">
-						<a href="courses.php">Courses</a>
+					<li id="navbar-Feedback">
+						<a href="feedback.php">Feedback</a>
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>

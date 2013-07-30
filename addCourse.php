@@ -11,7 +11,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('#navbar-Courses').css('background-color','rgba(38,65,108,1)');
+				
 			});
 		</script>
 	</head>
@@ -29,10 +29,10 @@
 						<a href="home.php">Home</a>
 					</li>
 					<li id="navbar-Appointments">
-						<a href="appointments.php">Appointments
+						<a href="appointments.php">Appointments</a>
 					</li>
-					<li id="navbar-Courses">
-						Courses
+					<li id="navbar-Feedback">
+						<a href="feedback.php">Feedback</a>
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>

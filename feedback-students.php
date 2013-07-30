@@ -185,7 +185,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('#navbar-Courses').css('background-color','rgba(38,65,108,1)');
+				$('#navbar-Feedback').css('background-color','rgba(38,65,108,1)');
 			});
 		</script>
 	</head>
@@ -194,7 +194,7 @@
 			<h1>BlueFeeds</h1>
 		</div>
 		<div id="page-title">
-			<h2>Courses</h2>
+			<h2>Your Feedback</h2>
 		</div>
 		<div id="container">
 			<div id="navbar">
@@ -203,104 +203,33 @@
 						<a href="home.php">Home</a>
 					</li>
 					<li id="navbar-Appointments">
-						<a href="appointments.php">Appointments
+						<a href="appointments.php">Appointments</a>
 					</li>
-					<li id="navbar-Courses">
-						Courses
+					<li id="navbar-Feedback">
+						Feedback
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
 					</li>
 				</ul>
 			</div>
-			<div id="courses-container">
-				<div id="courses-students">
-					<p>
-						Click on one of your courses below to view your feedback
-					</p>
-					<a class="courses-students-courselink" href="#">
-						<div class="courses-students-course">
-							<p class="courses-students-instructors">
-							<em>Instructor1, Instructor2</em>
-							</p>
-							<h3>Course Name</h3>
-							<p>
-							<em>Course description blah blah blah</em>
-							</p>
-							<p class="courses-students-students">
-							<h3>Students</h3>
-							Ben Berg, Niko Kesten
-							</p>
-						</div>
-					</a>
-					<a class="courses-students-courselink" href="#">
-						<div class="courses-students-course">
-							<p class="courses-students-instructors">
-							<em>Instructor1, Instructor2</em>
-							</p>
-							<h3>Course Name</h3>
-							<p>
-							<em>Course description blah blah blah</em>
-							</p>
-							<p class="courses-students-students">
-							<h3>Students</h3>
-							Ben Berg, Niko Kesten
-							</p>
-						</div>
-					</a>
-				</div>
-				<div id="courses-instructors">
-					<p>
-						Click on a student's name to view his/her previous feedback or to give them feedback in that course
-					</p>
-					<div class="courses-instructors-course">
-						<p class="courses-instructors-instructors">
-						<em>Instructor1, Instructor2</em>
-						</p>
-						<h3>Course Name</h3>
-						<p>
-						<em>Course description blah blah blah</em>
-						</p>
-						<p class="courses-instructors-students">
-						<h3>Students</h3>
-						<a class="courses-instructors-studentlink" href="#">Ben Berg</a>, <a class="courses-instructors-studentlink" href="#">Niko Kesten</a>
-						</p>
-						<div class="courses-instructors-addStudents">
-							<form>
-								<input class="courses-add-input" type="text" name="students" placeholder="Type students you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value=""><img src="images/search.png"></button>
-							</form>
-							<div class="courses-instructors-addStudents-results">
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">Ben Berg</p>
-									</div>
-								</a>
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">Niko Kesten</p>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="courses-instructors-addInstructors">
-							<form>
-								<input class="courses-add-input" type="text" width="300" name="students" placeholder="Type instructors you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value=""><img src="images/search.png"></button>
-							</form>
-							<div class="courses-instructors-addInstructors-results">
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">The Professor</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="add-button">
-						<a href="addCourse.php"><button type="button" class="darkblue-button" value="">Add a New Course</button></a>
-					</div>
+			<div id="feedback-container">
+				<div id="feedback-students">
+					<h3>
+						Your feedback for [course name]
+					</h3>
+					<ul id="previous-feedback-list">
+						<li>
+							<p class="title">Title</p>
+							<p class="comment">Comment lala dk dhg aiw asfl lrem ipsum dargs slame dem</p>
+							<p class="author">- Instructor</p>
+						</li>
+						<li>
+							<p class="title">Title</p>
+							<p class="comment">Comment lala dk dhg aiw asfl lrem ipsum dargs sla me dem</p>
+							<p class="author">- Instructor</p>
+						</li>
+					</ul>
 				</div>
 			</div>		
 		</div>​
