@@ -59,6 +59,8 @@ if($row=mysqli_fetch_array($result)){
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="./desktopScript.js"></script>
 		<script>
 			$(document).ready(function() {
 				$('#navbar-Courses').css('background-color','rgba(38,65,108,1)');
@@ -116,14 +118,20 @@ if($row=mysqli_fetch_array($result)){
 						</p>
 						<div class="courses-instructors-addStudents">
 							<form>
-								<input class="courses-add-input" type="text" name="students" placeholder="Type students you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
+								<input class="courses-add-input studentAdd" id="me" type="text" name="students" placeholder="Type students you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
 							</form>
 						</div>
+						<ul id="results">
+							
+						</ul>
 						<div class="courses-instructors-addInstructors">
 							<form>
-								<input class="courses-add-input" type="text" width="300" name="students" placeholder="Type instructors you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
+								<input class="courses-add-input instructorAdd" type="text" width="300" name="students" placeholder="Type instructors you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
 							</form>
 						</div>
+						<ul id="iresults">
+							
+						</ul>
 					</div>
 					<div class="add-button">
 						<a href="addCourses.php"><button type="button" class="darkblue-button" value="">Add Course</button></a>
