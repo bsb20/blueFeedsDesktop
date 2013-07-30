@@ -119,8 +119,8 @@ else{
 					<li id="navbar-Appointments">
 						<a href="appointments.php">Appointments
 					</li>
-					<li id="navbar-Courses">
-						Courses
+					<li id="navbar-Feedback">
+						Feedback
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
