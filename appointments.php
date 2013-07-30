@@ -1,12 +1,7 @@
 <?php
-	session_start();
-	date_default_timezone_set("America/New_York");
+	include("initialize.php");
 	$table="`test`.`students`";
 	$table2="`test`.`appointments`";
-	$db=new mysqli("127.0.0.1","root","devils","test",8889);
-	if($db->connect_errno){
-		echo "FAILURE";
-	}
 	$UUID=$_SESSION["UUID"];
 	$final="";
 	$sql = "SELECT * FROM $table,$table2 WHERE $table.`SUID`=$table2.`SUID` AND $table2.`UUID`='$UUID' ORDER BY `start`;";
@@ -26,13 +21,12 @@
 				$pastMessage= strtotime($row['start'])>time() || $row['isWeekly'] ? "":"Past Meeting Time";
 				$duration=$row['duration'];
 				$start=strtotime($row['start']);
-				$formattedStart=date("g:i A",$start);
+				$formattedStart=date("D, M d g:i A",$start);
 				$end=date("g:i A", strtotime($row['end']));
 				$weekly= $row['isWeekly'] ? "Weekly: ".date("l",$start) : date("l, M j", $start);
 				$title=$row['title'];
 				$loc=$row['location'];
 				$AUID=$row["AUID"];
-				
 				$today=getDate();
 				$testday = $today['mday'];
 				$day=intval(date("j",$start));
@@ -56,17 +50,16 @@
 				switch ($timeframe)
 				{
 					case "today":
+						$time="today";
 						if($today['mday']==$day and $today['mon']==$month and $today['year']==$year)
 						{
+						
 							$table.="<div class='appointments-appointment'>
 						<p>
 						<strong>$title</strong>
 						</p>
 						<p>
 						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -81,6 +74,7 @@
 						break;
 						
 					case "thisweek":
+						$time="this week";
 						$beginweek = $today['mday'] - $today['mday']%7;
 						$endweek = $today['mday']+7 - ($today['mday']+7)%7;						
 						if($beginweek <= $day and $day <= $endweek and $today['mon']==$month and $today['year']==$year)
@@ -91,9 +85,6 @@
 						</p>
 						<p>
 						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -107,6 +98,7 @@
 						break;
 
 					case "month":
+						$time="this month";
 						if($today['mon']==$month and $today['year']==$year)
 						{
 							$table.="							<div class='appointments-appointment'>
@@ -115,9 +107,6 @@
 						</p>
 						<p>
 						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -131,6 +120,7 @@
 						break;
 						
 					case "all":
+						$time="";
 						if($today['year']==$year)
 						{
 							$table.="						<div class='appointments-appointment'>
@@ -139,9 +129,6 @@
 						</p>
 						<p>
 						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -159,21 +146,22 @@
 	switch($timeframe)
 	{
 		case "today":
-			$_SESSION['message'] = "Here are your appointments for today:";	
+			$message = "Here are your appointments for today:";	
 			break;
 		case "thisweek":
-			$_SESSION['message'] = "Here are your appointments for this week:";
+			$message = "Here are your appointments for this week:";
 			break;
 		case "month":
-			$_SESSION['message'] = "Here are your appointments for this month:";
+			$message = "Here are your appointments for this month:";
 			break;
 		case "all":
-			$_SESSION['message'] = "Here is your history of appointments:";
+			$message = "Here is your history of appointments:";
 			break;
 	}
-	$_SESSION['apptToday'] = $apptToday;
-	$_SESSION['numAppt'] = $numAppt;
-	$_SESSION['appointments'] = $table;
+//	echo $table;
+//	$apptToday;
+//	$numAppt;
+//	$table;
 ?>
 <!DOCTYPE html>
 <html>
@@ -220,7 +208,7 @@
 						View Appointments
 					</li>
 					<li id="subnav-addAppointments">
-						<a href="addAppointments.php">Add Appointments</a>
+						<a href="addAppointments.html">Add Appointments</a>
 					</li>
 				</ul>
 			</div>
@@ -253,15 +241,15 @@
 				</div>							
 				<p>
 					<em><?php
-						echo "You have " . $_SESSION['apptToday'] . " appointments today.";
+						echo "You have " . $numAppt . " appointments $time:";
 					?></em>
 				</p>
 				<div id="appointments-appointments">
 					<table class="striped">
 						<?php
-							if(!$_SESSION['numAppt']==0)
+							if(!$numAppt==0)
 							{
-								echo $_SESSION['appointments'];								
+								echo $table;								
 							}
 							else
 							{
