@@ -137,10 +137,31 @@ input {
 		0px 0px 0px rgba(38,65,108,1);
 }
 
+.darkblue-button:hover {
+	background-color: rgba(38,65,108,.5);
+	background: -moz-linear-gradient(
+		top,
+		rgba(38,65,108,.5) 0%,
+		rgba(38,65,108,.5));
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(rgba(38,65,108,.5)),
+		to(rgba(38,65,108,.5)));
+}
+
 .darkblue-button:active {
 	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
 	box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+	background-color: rgba(38,65,108,1);
+	background: -moz-linear-gradient(
+		top,
+		rgba(38,65,108,1) 0%,
+		rgba(38,65,108,1));
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(rgba(38,65,108,1)),
+		to(rgba(38,65,108,1)));
 }
 
 .lightblue-button {
@@ -545,6 +566,51 @@ h3.large {
 	margin-right: auto;
 }
 
+.ui-datepicker {
+	background-color: rgba(54,93,150,1);
+	padding: 20px;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 10px 0px;
+	margin-left: 25px;
+}
+
+.ui-datepicker-next {
+	float: right;
+}
+
+.ui-datepicker-next:hover, .ui-datepicker-prev:hover {
+	cursor: pointer;
+	color: rgba(255,255,255,.5);
+}
+
+.ui-datepicker-next:active, .ui-datepicker-prev:active {
+	color: rgba(38,65,108,1);
+}
+
+.ui-datepicker-title {
+	text-align: center;
+}
+
+.ui-datepicker-calendar td {
+	padding: 5px;
+	font-weight: 200;
+}
+
+.ui-datepicker-calendar th {
+	font-weight: 600;
+}
+
+.ui-state-default:hover {
+	color: rgba(255,255,255,.5);
+}
+
+.ui-state-default:active {
+	color: rgba(38,65,108,1);
+}
+
+a.ui-state-default.ui-state-active {
+	color: rgba(38,65,108,1);
+}
+
 /* --------- */		
 
 #courses-container {
@@ -696,7 +762,7 @@ h3.large {
 
 .tabs li {
 	display: inline-block;
-	padding: 10px;
+	padding: 20px;
 	margin-right: 20px;
 	background-color: rgba(54,93,150,1);
 }
@@ -711,4 +777,127 @@ h3.large {
 
 #previous-feedback-list {
 	margin-top:20px;
+}
+
+#previous-feedback-list li {
+	background-color: rgba(38,65,108,1);
+	padding: 20px;
+	margin-top: 20px;
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.comment {
+	background-image: url('../images/comment1.png'), url('../images/comment2.png');
+	background-position: left top, right top;
+	background-repeat: no-repeat;
+	background-size: 13px;
+	padding-left: 17px;
+	padding-right: 25px;
+	padding-top: 4px;
+	margin-top: 10px;
+}
+
+#previous-feedback-list li:first-child {
+	margin-top: 0;
+}
+
+.title {
+	font-size: 18px;
+}
+
+.author {
+	font-style: italic;
+	margin-top: 5px;
+	text-align: right;
+}
+
+#feedback-form {
+	padding-top: 20px;
+	width: 400px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.feedback-textarea {
+	font-family: source sans pro, helvetica, arial, sans-sesrif;
+	margin-top: 10px;
+	font-weight: 200;
+	padding: 5px;
+	width: 350px;
+}
+
+.feedback-input {
+	width: 300px;
+}
+
+#feedback-container {
+	width: 430px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+#feedback-students {
+	background-color: rgba(54,93,150,1);
+	padding-top: 20px;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
+/* --------- */
+
+#newsfeed-container {
+	margin-top: 50px;
+	background-color: rgba(54,93,150,1);
+	padding: 20px;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#newsfeed-list {
+	margin-top: 20px;
+}
+
+#newsfeed-list li {
+	padding: 20px;
+	margin-top: 20px;
+	background-color: rgba(38,65,108,1);
+}
+
+#newsfeed-list li:first-child {
+	margin-top: 0;
+}
+
+#newsfeed-list li:hover {
+	background-color: rgba(38,65,108,.5);
+}
+
+#newsfeed-list li:active {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+
+#add-article-form {
+	width: 400px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.addNews-input {
+	width: 300px;
+}
+
+#addNews-container {
+	margin-top: 50px;
+	background-color: rgba(54,93,150,1);
+	padding: 20px;
+	width: 450px;
+	margin-left: auto;
+	margin-right: auto;
 }
