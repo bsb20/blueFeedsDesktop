@@ -2,7 +2,16 @@
 include("initialize.php");
 $table="`test`.`appointments`";
 $user=$_SESSION["UUID"];
-$student=$_SESSION["SUID"];
+//if(isset($_SESSION["SUID"])){
+//$student=$_SESSION["SUID"];
+//}
+$name=$_POST["studentname"];
+$sql="SELECT * FROM `test`.`students` WHERE `user`='$name'";
+$result=$db->query($sql);
+if($row=mysqli_fetch_array($result)){
+	$student=$row["SUID"];
+}
+
 $day=$_POST['day'];
 $month=$_POST['month'];
 $year=$_POST['year'];
@@ -21,4 +30,5 @@ $title=$_POST["title"];
 $AUID=uniqid("",FALSE);
 $_SESSION['AUID']=$AUID;
 $db->real_query("INSERT INTO ".$table." (`UUID`, `SUID`, `start`, `end`, `title`, `location`, `AUID`) VALUES ('$user', '$student', '$sDateTime', '$eDateTime', '$title', '$location', '$AUID');");
+header("Location: appointments.php")
 ?>

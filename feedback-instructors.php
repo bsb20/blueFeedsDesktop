@@ -1,4 +1,36 @@
 <!DOCTYPE html>
+<?php
+include('initialize.php');
+$SUID=$_GET['id'];
+$UUID=$_SESSION["UUID"];
+$GUID=$_GET["course"];
+$sql="SELECT * FROM `test`.`students` WHERE `SUID`='$SUID'";
+$result=$db->query($sql);
+if($row = mysqli_fetch_array($result)){
+	$name=$row["user"];
+}
+$sql="SELECT * FROM `test`.`courses` WHERE `GUID`='$GUID'";
+$result=$db->query($sql);
+if($row = mysqli_fetch_array($result)){
+	$course=$row["title"];
+}
+$sql = "SELECT `test`.`comments`.`title`, `test`.`comments`.`text`, `test`.`users`.`user` FROM `test`.`comments`, `test`.`users` WHERE `test`.`comments`.`SUID`='$SUID' AND `test`.`comments`.`GUID`='$GUID' AND `test`.`users`.`UUID`=`test`.`comments`.`UUID` AND (`test`.`comments`.`UUID`='$UUID' OR `test`.`comments`.`instructors`='1') ORDER BY `test`.`comments`.`date` DESC";
+$result=$db->query($sql);
+$comments="";
+for($i=0; $i<mysqli_num_rows($result); $i++){
+	if($row = mysqli_fetch_array($result)){
+		$title=$row["title"];
+		$comment=$row["text"];
+		$author=$row["user"];
+		$comments.= "			<li>
+							<p class='title'>$title</p>
+							<p class='comment'>$comment</p>
+							<p class='author'>- $author</p>
+						</li>";
+	}
+}
+?>
+
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -46,17 +78,13 @@
 					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>
 				</ul>
 			 	<div id="tab-previousfeedback">
-					<h3>[Student's Name]'s Previous Feedback for [course name]</h3>
+					<h3><?php echo "$name"?>'s Previous Feedback for <?php echo $course ?></h3>
 					<ul id="previous-feedback-list">
-						<li>
-							<p class="title">Title</p>
-							<p class="comment">Comment lala dk dhg aiw asfl lrem ipsum dargs slamedem</p>
-							<p class="author">- Instructor</p>
-						</li>
+						<?php echo $comments ?>
 					</ul>
 			  	</div>
 			  	<div id="tab-leavefeedback">
-					<h3>Leave [Student's Name] feedback for [course name]</h3>
+					<h3>Leave <?php echo "$name"?> feedback for <?php echo $course ?></h3>
 					<div id="feedback-form">
 						<form>			
 							<p>
@@ -73,7 +101,7 @@
 					</div>
 			  	</div>
 			  	<div id="tab-forms">
-			  		<h3>Complete printable forms for [Student's Name] for [course name]</h3>
+			  		<h3>Complete printable forms for <?php echo "$name"?> for <?php echo $course ?></h3>
 					<div id="pdfs">
 					</div>
 			  	</div>

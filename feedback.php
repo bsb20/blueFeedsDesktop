@@ -1,8 +1,16 @@
 <?php
 	include("initialize.php");
 	$UUID=$_SESSION["UUID"];
+	$isStudent=$_SESSION["isStudent"];
 	$final="";
+	if($isStudent){
+	$SUID=$_SESSION["SUID"];
+	$sql="SELECT * FROM `test`.`gs`, `test`.`courses` WHERE `test`.`gs`.`SUID`='$SUID' AND `test`.`courses`.`GUID`=`test`.`gs`.`GUID`;";
+	$UUID="-";
+	}
+	else{
 	$sql = "SELECT * FROM `test`.`courses`, `test`.`groups` WHERE `test`.`groups`.`UUID`='$UUID' AND `test`.`courses`.`GUID`=`test`.`groups`.`GUID`";
+	}
 	$result=$db->query($sql);
 $finally="";
 for($i=0; $i<mysqli_num_rows($result); $i++){
@@ -11,6 +19,7 @@ if($row=mysqli_fetch_array($result)){
     $title=$row["title"];
     $GUID=$row["GUID"];
 }
+
 	$sql2="SELECT * FROM `test`.`groups`, `test`.`users` WHERE `test`.`groups`.`UUID`=`test`.`users`.`UUID` AND `test`.`groups`.`GUID`='$GUID' AND `test`.`groups`.`UUID`!='$UUID';";
 	$result2=$db->query($sql2);
 	$instruct="";
@@ -26,7 +35,7 @@ if($row=mysqli_fetch_array($result)){
 	for($j=0; $j<mysqli_num_rows($result3); $j++){
 		if($row2=mysqli_fetch_array($result3)){
 			if(!in_array($row2["user"],$duplicates)){
-			$student.="<a class='courses-instructors-studentlink' href=studentPage.php?id=".$row2["SUID"].">".$row2["user"]."</a>, ";
+			$student.="<a class='courses-instructors-studentlink' href=feedback-instructors.php?course=$GUID&id=".$row2["SUID"].">".$row2["user"]."</a>, ";
 			array_push($duplicates,$row2["user"]);
 			}
 		}
@@ -34,7 +43,7 @@ if($row=mysqli_fetch_array($result)){
 $instruct=substr($instruct,0,strlen($instruct)-2);
 $student=substr($student,0,strlen($student)-2);
 if(isset($_SESSION["isStudent"])){
- $finally.=                       "<a class='courses-students-courselink' href='coursePage.php?course=$GUID'>
+ $finally.=                       "<a class='courses-students-courselink' href='feedback-students.php?course=$GUID'>
 						<div class='courses-students-course'>
 							<p class='courses-students-instructors'>
 							<em>$instruct</em>
