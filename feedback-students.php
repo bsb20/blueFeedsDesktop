@@ -1,179 +1,29 @@
 <?php
-	session_start();
-	date_default_timezone_set("America/New_York");
-	$table="`test`.`students`";
-	$table2="`test`.`appointments`";
-	$db=new mysqli("127.0.0.1","root","devils","test",8889);
-	if($db->connect_errno){
-		echo "FAILURE";
-	}
-	$UUID=$_SESSION["UUID"];
-	$final="";
-	$sql = "SELECT * FROM $table,$table2 WHERE $table.`SUID`=$table2.`SUID` AND $table2.`UUID`='$UUID' ORDER BY `start`;";
+	include('initialize.php');
+	$SUID=$_SESSION["SUID"];
+	$GUID=$_GET["course"];
+	$sql=$sql="SELECT * FROM `test`.`comments` WHERE `SUID`='$SUID' AND `GUID`='$GUID' AND `students`='1' ORDER BY `date` DESC";
 	$result=$db->query($sql);
-	$table = "";
-	
-	$numAppt = 0;
-	$apptToday = 0;
-	/* Time Filtering */
-	for($i=0; $i<mysqli_num_rows($result); $i++){
-		if($row=mysqli_fetch_array($result)){
-				$name=$row["user"];
-				$photo=$row["photo"];
-				$title=$row["title"];
-				$spec=$row["speciality"];
-				$past=strtotime($row['start'])>time() || $row['isWeekly'] ? "a" : "d";
-				$pastMessage= strtotime($row['start'])>time() || $row['isWeekly'] ? "":"Past Meeting Time";
-				$duration=$row['duration'];
-				$start=strtotime($row['start']);
-				$formattedStart=date("g:i A",$start);
-				$end=date("g:i A", strtotime($row['end']));
-				$weekly= $row['isWeekly'] ? "Weekly: ".date("l",$start) : date("l, M j", $start);
-				$title=$row['title'];
-				$loc=$row['location'];
-				$AUID=$row["AUID"];
-				
-				$today=getDate();
-				$testday = $today['mday'];
-				$day=intval(date("j",$start));
-				$month=intval(date("n",$start));
-				$year=intval(date("Y",$start));	
-
-				if(empty($_GET))
-				{
-					$timeframe="thisweek";
-				}
-				else
-				{
-					$timeframe=$_GET["filter"];
-				}
-				
-				if($today['mday']==$day and $today['mon']==$month and $today['year']==$year)
-				{
-					$apptToday++;
-				}
-				
-				switch ($timeframe)
-				{
-					case "today":
-						if($today['mday']==$day and $today['mon']==$month and $today['year']==$year)
-						{
-							$table.="<div class='appointments-appointment'>
-						<p>
-						<strong>$title</strong>
-						</p>
-						<p>
-						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
-						</p>
-						<p>
-						Time: $formattedStart - $end
-						</p>
-						<p>
-						Location: $loc
-						</p>
-					</div>
-					";		
-							$numAppt++;
-						}		
-						break;
-						
-					case "thisweek":
-						$beginweek = $today['mday'] - $today['mday']%7;
-						$endweek = $today['mday']+7 - ($today['mday']+7)%7;						
-						if($beginweek <= $day and $day <= $endweek and $today['mon']==$month and $today['year']==$year)
-						{
-							$table.="							<div class='appointments-appointment'>
-						<p>
-						<strong>$title</strong>
-						</p>
-						<p>
-						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
-						</p>
-						<p>
-						Time: $formattedStart - $end
-						</p>
-						<p>
-						Location: $loc
-						</p>
-					</div>";				
-							$numAppt++;
-						}				
-						break;
-
-					case "month":
-						if($today['mon']==$month and $today['year']==$year)
-						{
-							$table.="							<div class='appointments-appointment'>
-						<p>
-						<strong>$title</strong>
-						</p>
-						<p>
-						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
-						</p>
-						<p>
-						Time: $formattedStart - $end
-						</p>
-						<p>
-						Location: $loc
-						</p>
-					</div>";	
-							$numAppt++;
-						}				
-						break;
-						
-					case "all":
-						if($today['year']==$year)
-						{
-							$table.="						<div class='appointments-appointment'>
-						<p>
-						<strong>$title</strong>
-						</p>
-						<p>
-						<em>with $name</em>
-						</p>
-						<p>
-						Date: $??
-						</p>
-						<p>
-						Time: $formattedStart - $end
-						</p>
-						<p>
-						Location: $loc
-						</p>
-					</div>";				
-							$numAppt++;
-						}				
-						break;						
-				}
-		}
-	}
-	switch($timeframe)
-	{
-		case "today":
-			$_SESSION['message'] = "Here are your appointments for today:";	
-			break;
-		case "thisweek":
-			$_SESSION['message'] = "Here are your appointments for this week:";
-			break;
-		case "month":
-			$_SESSION['message'] = "Here are your appointments for this month:";
-			break;
-		case "all":
-			$_SESSION['message'] = "Here is your history of appointments:";
-			break;
-	}
-	$_SESSION['apptToday'] = $apptToday;
-	$_SESSION['numAppt'] = $numAppt;
-	$_SESSION['appointments'] = $table;
+$finally="";
+for($i=0; $i<mysqli_num_rows($result); $i++){
+if($row=mysqli_fetch_array($result)){
+    $title=$row["title"];
+    $text=$row["text"];
+    $CUID=$row["CUID"];
+    $date=$row["date"];
+    $students=$row["students"];
+    $instructors=$row["instructors"];
+    $time=strtotime($date);
+    $formattedDate=date("m/d/y",$time);
+    }
+            $finally.=                       "<li data-theme='d' class='listNote dynamicComment' data-dynamicContent='commentRetrieve' onClick='echoComment()' style='margin: 1%; overflow: visible; white-space: normal;'>
+						<h1>$title</h1>
+						<p class='note'>$text</p>
+                                                <p class='ui-li-aside'><strong>$formattedDate</strong></p>
+                                                    <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
+                                                    <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
+                                                    <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
+					</li>";}
 ?>
 <!DOCTYPE html>
 <html>
@@ -219,16 +69,7 @@
 						Your feedback for [course name]
 					</h3>
 					<ul id="previous-feedback-list">
-						<li>
-							<p class="title">Title</p>
-							<p class="comment">Comment lala dk dhg aiw asfl lrem ipsum dargs slame dem</p>
-							<p class="author">- Instructor</p>
-						</li>
-						<li>
-							<p class="title">Title</p>
-							<p class="comment">Comment lala dk dhg aiw asfl lrem ipsum dargs sla me dem</p>
-							<p class="author">- Instructor</p>
-						</li>
+						<?php echo $finally ?>
 					</ul>
 				</div>
 			</div>		

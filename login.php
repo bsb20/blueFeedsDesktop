@@ -15,7 +15,19 @@ $sql = "SELECT * FROM ".$table." WHERE `user`='".$user."';";
 $result=$db->query($sql);
 if($row=mysqli_fetch_array($result) and $row["pass"]==md5($pass,FALSE)){
         session_start();
+	unset($_SESSION["isStudent"]);
         $_SESSION["UUID"]=$row["UUID"];
+        $_SESSION["GUID"]= NULL;
+	$_SESSION['alert'] = FALSE;		
+	header('Location: home.php');
+    }
+$sql = "SELECT * FROM `test`.`students` WHERE `id`='".$user."';";
+$result=$db->query($sql);
+if($row=mysqli_fetch_array($result) and $row["pass"]==md5($pass,FALSE)){
+        session_start();
+	unset($_SESSION["UUID"]);
+	$_SESSION["isStudent"]=1;
+        $_SESSION["SUID"]=$row["SUID"];
         $_SESSION["GUID"]= NULL;
 	$_SESSION['alert'] = FALSE;		
 	header('Location: home.php');
