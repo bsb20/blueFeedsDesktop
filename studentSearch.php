@@ -23,7 +23,7 @@ $repeated=array();
                  $SUID=$row["SUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
                     <a>
-                    <h1>$name</h1>
+                    <h1 class='user'>$name</h1>
                     <img src='$photo' class='imgTile'alt='getarealphone'/>
                     <p>$title, $spec</p>
                     </a>

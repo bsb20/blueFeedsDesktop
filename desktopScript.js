@@ -11,9 +11,22 @@ $(document).ready(function(){
         });
     });
 
+$(document).ready(function(){
+    $(".appt-enter-student").keyup(function(){
+        $(this).parents(".appt-add-student").next("#sresults").empty();
+        if($(this).val().length==0){
+            return;
+        }
+        var query={query:$(this).val()};
+        $.ajax({type:"POST", url:"studentSearch.php", data:query, success:sSearch});
+        });
+    });
 function search(data,status){
     var id="#"+this.invokedata;
     $(id).find(".results").append(data);
+}
+function sSearch(data,status){
+    $("#sresults").append(data);
 }
 function addedToCourse(data,status){
     alert(data);
@@ -55,3 +68,10 @@ $(document).ready(function(){
 		$.ajax({type: "POST", url: "addInstructor.php", data: {'uuid':found, 'guid':course}, error: onError, success:addedToCourse});
 		});
 	    });
+
+$(document).ready(function(){
+    $("#sresults").on("click","li", function(e){
+	var name=$(this).find('.user').text();
+	$(".appt-enter-student").val(name);
+	});
+    });
