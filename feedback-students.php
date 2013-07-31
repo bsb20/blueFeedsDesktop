@@ -24,6 +24,11 @@ if($row=mysqli_fetch_array($result)){
                                                     <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
                                                     <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
 					</li>";}
+	$sql="SELECT * FROM `test`.`courses` WHERE `GUID`='$GUID'";
+	$result=$db->query($sql);
+	if($row=mysqli_fetch_array($result)){
+		$name=$row["title"];
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,7 +71,7 @@ if($row=mysqli_fetch_array($result)){
 			<div id="feedback-container">
 				<div id="feedback-students">
 					<h3>
-						Your feedback for [course name]
+						Your feedback for <?php echo $name ?>
 					</h3>
 					<ul id="previous-feedback-list">
 						<?php echo $finally ?>
