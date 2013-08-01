@@ -1,12 +1,21 @@
 <?php
 	/* Rss feed display page */
-	session_start();
+include('initialize.php');
 	/* Set this variable to the location of the xml file */
 	/* Note: the xml file has to have read and write privileges which can be changed with chmod */
-	$filepath = "/home/htdocs/desktop/bluefeedsTest.xml";
-	$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
-	$rss = "";
-	foreach($xml->channel->item as $item)
+	//$filepath = "/home/htdocs/desktop/bluefeedsTest.xml";
+	//$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
+$table="`test`.`feeds`";
+$UUID=$_SESSION["UUID"];
+$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID' OR `UUID`='a'";
+$result=$db->query($sql);
+$rss = "";
+for($i=0; $i<mysqli_num_rows($result); $i++){
+    if($row=mysqli_fetch_array($result)){
+	$url=$row["url"];
+    }
+$xml =simplexml_load_file($url);
+foreach($xml->channel->item as $item)
 	{
 		$title = $item->title;
 		$link = $item->link;
@@ -27,7 +36,8 @@
 						</div>
 					</li>";
 	}
-	$_SESSION['rss'] = $rss;	
+	$_SESSION['rss'] = $rss;
+}	
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,14 +94,6 @@
 					<?php
 						echo $_SESSION['rss'];
 					?>
-					<li>
-						<a href=$link>
-							<h3>$title</h3>
-							<p class="news-description">
-								$desc
-							</p>
-						</a>
-					</li>
 				</ul>
 				<div class="add-button">
 				<a href="addNews.php"><button class="darkblue-button">Add New Article</button></a>

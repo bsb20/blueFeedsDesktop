@@ -71,7 +71,7 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#sresults").on("click","li", function(e){
-	var name=$(this).find('.user').text();
+	var name=$(this).attr("id");
 	$(".appt-enter-student").val(name);
 	});
     });
