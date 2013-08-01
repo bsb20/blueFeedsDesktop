@@ -17,9 +17,9 @@ if($row=mysqli_fetch_array($result)){
     $formattedDate=date("m/d/y",$time);
     }
             $finally.=                       "<li data-theme='d' class='listNote dynamicComment' data-dynamicContent='commentRetrieve' onClick='echoComment()' style='margin: 1%; overflow: visible; white-space: normal;'>
-						<h1>$title</h1>
-						<p class='note'>$text</p>
-                                                <p class='ui-li-aside'><strong>$formattedDate</strong></p>
+						<p class='title'>$title</p>
+						<p class='comment'>$text</p>
+						<p class='author'> - $instructor</p>
                                                     <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
                                                     <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
                                                     <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
@@ -73,12 +73,44 @@ if($row=mysqli_fetch_array($result)){
 					<h3>
 						Your feedback for <?php echo $name ?>
 					</h3>
+					<div id="feedback-students-filters">
+						<p>Filter feedback by tag:</p>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+						<a href="./feedback-students.php?filter=$tag">																															
+							<button class="white-button filter-button">
+								<span class="label" style="text-align: center;">$tag</span>
+							</button>
+						</a>
+					</div>
 					<ul id="previous-feedback-list">
 						<?php echo $finally ?>
 					</ul>
 				</div>
 			</div>		
-		</div>​
-	</body>
-</html>
+		</div>
+		<?php include('footer.php'); ?>
 

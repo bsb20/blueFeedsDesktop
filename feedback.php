@@ -59,10 +59,7 @@ if(isset($_SESSION["isStudent"])){
 						</div>
 					</a>";}
 else{
-	$finally.="<div id='courses-instructors'>
-					<p>
-						Click on a student's name to give them feedback in that course
-					</p>
+	$finally.="
 					<div class='courses-instructors-course' id='$GUID'>
 						<p class='courses-instructors-instructors'>
 						<em>$instruct</em>
@@ -75,24 +72,29 @@ else{
 						<h3>Students</h3>
 						$student
 						</p>
-						<div class='courses-instructors-addStudents'>
-							<form>
-								<input class='courses-add-input studentAdd' id='me' type='text' name='students' placeholder='Type students you would like to add here, separated by commas'> <button type='submit' class='lightblue-button courses-addStuInsButton value=''>Add</button>
-							</form>
-						</div>
-						<ul class='results'>
+						<div class='search'>
+						<p class='searchHead'>Add Students and Instructors</p>
+						<div>
+							<div class='courses-instructors-addStudents'>
+								<form>
+									<input class='courses-add-input studentAdd' id='me' type='text' name='students' placeholder='Start typing an student&apos;s name, then click it to add them'>
+								</form>
+							</div>
+							<ul class='results'>
 							
-						</ul>
-						<div class='courses-instructors-addInstructors'>
-							<form>
-								<input class='courses-add-input instructorAdd' type='text' width='300' name='students' placeholder='Type instructors you would like to add here, separated by commas'> <button type='submit' class='lightblue-button courses-addStuInsButton' value=''>Add</button>
-							</form>
-						</div>
-						<ul class='iresults'>
+							</ul>
+							<div class='courses-instructors-addInstructors'>
+								<form>
+									<input class='courses-add-input instructorAdd' type='text' width='300' name='students' placeholder='Start typing an instructor&apos;s name, then click it to add them'>
+								</form>
+							</div>
+							<ul class='iresults'>
 							
-						</ul>
+							</ul>
+							</div>
+						</div>
 					</div>
-				</div>";
+				";
 }
 }
 ?>
@@ -105,10 +107,12 @@ else{
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 		<script src="./desktopScript.js"></script>
 		<script>
 			$(document).ready(function() {
-				$('#navbar-Courses').css('background-color','rgba(38,65,108,1)');
+				$('#navbar-Feedback').css('background-color','rgba(38,65,108,1)');
+				$(".search").accordion({ header: ".searchHead", collapsible: true, active: false, heightStyle: "content" });
 			});
 		</script>
 	</head>
@@ -117,7 +121,7 @@ else{
 			<h1>BlueFeeds</h1>
 		</div>
 		<div id="page-title">
-			<h2>Courses</h2>
+			<h2>Feedback</h2>
 		</div>
 		<div id="container">
 			<div id="navbar">
@@ -126,7 +130,7 @@ else{
 						<a href="home.php">Home</a>
 					</li>
 					<li id="navbar-Appointments">
-						<a href="appointments.php">Appointments
+						<a href="appointments.php">Appointments</a>
 					</li>
 					<li id="navbar-Feedback">
 						Feedback
@@ -141,71 +145,19 @@ else{
 					<p>
 						Click on one of your courses below to view your feedback
 					</p>
-					<?php
-					echo $finally;
-					?>
 				</div>
 				<div id="courses-instructors">
 					<p>
 						Click on a student's name to view his/her previous feedback or to give them feedback in that course
 					</p>
-					<div class="courses-instructors-course" id="id">
-						<p class="courses-instructors-instructors">
-						<em>Instructor1, Instructor2</em>
-						</p>
-						<h3>Course Name</h3>
-						<p>
-						<em>Course description blah blah blah</em>
-						</p>
-						<p class="courses-instructors-students">
-						<h3>Students</h3>
-						<a class="courses-instructors-studentlink" href="#">Ben Berg</a>, <a class="courses-instructors-studentlink" href="#">Niko Kesten</a>
-						</p>
-						<div class="courses-instructors-addStudents">
-							<form>
-<input class="courses-add-input studentAdd" id="me" type="text" name="students" placeholder="Type students you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
-							</form>
-							<div class="courses-instructors-addStudents-results">
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">Ben Berg</p>
-									</div>
-								</a>
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">Niko Kesten</p>
-									</div>
-								</a>
-							</div>
-						</div>
-						<ul id="results">
-							
-						</ul>
-						<div class="courses-instructors-addInstructors">
-							<form>
-								<input class="courses-add-input instructorAdd" type="text" width="300" name="students" placeholder="Type instructors you would like to add here, separated by commas"> <button type="submit" class="lightblue-button courses-addStuInsButton" value="">Add</button>
-							</form>
-							<div class="courses-instructors-addInstructors-results">
-								<a class="result-link" href="#">
-									<div class="result clearfix">
-										<img class="result-icon" />
-										<p class="result-name">The Professor</p>
-									</div>
-								</a>
-							</div>
-						</div>
-						<ul id="iresults">
-							
-						</ul>
-					</div>
+					<?php
+					echo $finally;
+					?>
 					<div class="add-button">
 						<a href="addCourse.php"><button type="button" class="darkblue-button" value="">Add a New Course</button></a>
 					</div>
 				</div>
 			</div>		
 		</div>​
-	</body>
-</html>
+	<?php include('footer.php'); ?>
 

@@ -34,7 +34,23 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 			$endweek = $today['mday']+7 - ($today['mday']+7)%7;			
 			if($beginweek <= $day and $day <= $endweek and $today['mon']==$month and $today['year']==$year)
 			{
-				$recentAppt.="								<li class='landing-appointment'>$name at $formattedStart on $formattedDate</li>";								
+				$recentAppt.="<li class='landing-appointment'>
+								<p>
+									<strong>$title</strong>
+								</p>
+								<p>
+									<em>with $name</em>
+								</p>
+								<p>
+									Date:&nbsp;&nbsp;$date
+								</p>
+								<p>
+									Time: $formattedStart - $end
+								</p>
+								<p>
+									Location: $loc
+								</p>
+							</li>";								
 			}
 	}
 }
@@ -56,13 +72,11 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 		$time=strtotime($date);
 		$formattedDate=date("m/d/y",$time);
 	}
-	$recentComment1="<h2>Most Recent Comment:</h2>
-					<div>
-						<h3>$title: </h3>					
-						<p id='RecentCommentText'>
-							$text
-						</p>
-					</div>";
+	$recentComment1="<li>
+						<p class='title'>$title</p>
+						<p class='comment'>$text</p>
+						<p class='author'>- $instructor</p>
+					</li>";
 	break;
 }
 //$_SESSION["recentComment1"]=$recentComment1;	
@@ -76,20 +90,11 @@ if($row=mysqli_fetch_array($result)){
 	if($recentComment1 !== "")
 	{
 		$recentComment2="
-						<div id='RecentCommentDiv'>
-							<h3>To: </h3>
-							<br>
-							<p id='RecentCommentText'>
-								$student
-							</p>
-						</div>
-						<div id='RecentCommentDiv'>					
-							<h3>On: </h3>
-							<br>						
-							<p id='RecentCommentText'>
-								$formattedDate
-							</p>	
-						</div>";		
+						<li>
+							<p class='title'>$title</p>
+							<p class='comment'>$text</p>
+							<p class='author'>- $instructor</p>
+						</li>";		
 	}
 }
 $_SESSION["recentComment2"]=$recentComment2;
@@ -190,41 +195,50 @@ $_SESSION['buttons'] = $buttons;
 					</li>
 				</ul>
 			</div>
-			<div id="appointments">
-				<h3>This Week's Appointments</h3>
-				<ul>
-					<?php
+			<div id="home" class="clearfix">
+				<div id="home-container" class="clearfix">
+					<div id="home-left">
+						<div id="appointments">
+							<h3>This Week's Appointments</h3>
+							<ul>
+								<?php
 						
-						if($recentAppt=="")
-						{
-							echo "<p>You have no appointments this week.</p>";
-						}
-						else
-						{
-							echo $recentAppt;
-						}
-					?>							
-				</ul>		
-				<p class="more-link">
-					<a href="appointments.php">Appointments &rarr;</a>
-				</p>
-			</div>
-			<div id="recentNews">
-				<h3>Recent News</h3>
-				<ul class="landing-news" data-role="accordion">
-					<?php
-						echo $rss;
-					?>                    
-                </ul>
-				<p class="more-link">
-					<a href="newsfeed.php">News Feed &rarr;</a>
-				</p>
-			</div>
-			<div id="appointments">
-				<h3>Recent Feedback</h3>
-				<p><?php echo $recentComment1?></p>
+									if($recentAppt=="")
+									{
+										echo "<p>You have no appointments this week.</p>";
+									}
+									else
+									{
+										echo $recentAppt;
+									}
+								?>							
+							</ul>		
+							<p class="more-link">
+								<a href="appointments.php">Appointments &rarr;</a>
+							</p>
+						</div>
+						<div id="home-feedback">
+							<h3>Recent Feedback</h3>
+							<ul id="previous-feedback-list">
+								<?php echo $recentComment1?>
+							</ul>
+							<p class="more-link">
+								<a href="feedback.php">All Feedback &rarr;</a>
+							</p>
+						</div>
+					</div>
+					<div id="recentNews">
+						<h3>Recent News</h3>
+						<ul class="landing-news" data-role="accordion">
+							<?php
+								echo $rss;
+							?>                    
+						</ul>
+						<p class="more-link">
+							<a href="newsfeed.php">News Feed &rarr;</a>
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</body>
-</html>
-
+	<?php include('footer.php'); ?>

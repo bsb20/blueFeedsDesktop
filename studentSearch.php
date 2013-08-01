@@ -22,12 +22,12 @@ $repeated=array();
                  $spec=$row["speciality"];
                  $SUID=$row["SUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
-                    <a>
-                    <h1 class='user'>$name</h1>
-                    <img src='$photo' class='imgTile'alt='getarealphone'/>
-                    <p>$title, $spec</p>
-                    </a>
-                    <input type='text' class='suid' style='display:none' value='$SUID'>
+                    	<div class='result clearfix'>
+							<img class='result-icon' src='$photo' />
+							<p class='result-name'>$name</p>
+							<p>$title, $spec</p>
+						</div>
+						<input type='text' class='suid' style='display:none' value='$SUID'>
                     </li>";
                 }
              }

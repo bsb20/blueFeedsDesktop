@@ -61,13 +61,20 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 						<a href="home.php">Home</a>
 					</li>
 					<li id="navbar-Appointments">
-						<a href="appointments.php">Appointments
+						<a href="appointments.php">Appointments</a>
 					</li>
 					<li id="navbar-Feedback">
-						Feedback
+						<a href="feedback.php">Feedback</a>
 					</li>
 					<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
+					</li>
+				</ul>
+			</div>
+			<div id="subnav">
+				<ul>
+					<li id="subnav-NewsFeed">
+						<a href="feedback.php">&larr; Back to Course List</a>
 					</li>
 				</ul>
 			</div>
@@ -76,11 +83,50 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 					<li><a href="#tab-previousfeedback"><span>Previous Feedback</span></a></li>
 					<li><a href="#tab-leavefeedback"><span>Leave Feedback</span></a></li>
 					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>
+					<li><a href="#tab-appointment"><span>Add Appointment</span></a></li>
 				</ul>
 			 	<div id="tab-previousfeedback">
 					<h3><?php echo "$name"?>'s Previous Feedback for <?php echo $course ?></h3>
+					<div id="feedback-students-filters">
+							<p>Filter feedback by tag:</p>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+						</div>
 					<ul id="previous-feedback-list">
 						<?php echo $comments ?>
+						<li>
+							<p class='title'>$title</p>
+							<p class='comment'>$comment</p>
+							<p class='author'>- $author</p>
+						</li>
 					</ul>
 			  	</div>
 			  	<div id="tab-leavefeedback">
@@ -103,10 +149,142 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 			  	<div id="tab-forms">
 			  		<h3>Complete printable forms for <?php echo "$name"?> for <?php echo $course ?></h3>
 					<div id="pdfs">
+					pdf viewer goes here
+					</div>
+					<div id="forms-feedback">
+						<p><?php echo "$name"?>'s Previous Feedback for <?php echo $course ?></p>
+						<div id="feedback-students-filters">
+							<p>Filter feedback by tag:</p>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+							<a href="./feedback-students.php?filter=$tag">																															
+								<button class="white-button filter-button">
+									<span class="label" style="text-align: center;">$tag</span>
+								</button>
+							</a>
+						</div>
+						<ul id="previous-feedback-list">
+							<?php echo $comments ?>
+							<li>
+							<p class='title'>$title</p>
+							<p class='comment'>$comment</p>
+							<p class='author'>- $author</p>
+							</li>
+						</ul>
+					</div>
+			  	</div>
+			  	<div id="tab-appointment">
+			  		<h3>Make an appointment with <?php echo "$name"?></h3>
+			  		<div id="tab-appointment-container">
+						<h3 class="centered">Appointment Information</h3>
+						<form id="add-appointments-form" action="addAppointments.php" method="post">
+							<div class="input-fields">
+								<label for="title">Title: </label>					
+								<input type="text" name="title" placeholder="(i.e. Coffee with Joe)"/>
+							</div>
+							<div class="input-fields appt-add-student">
+								<label for="studentname">Student: </label>					
+								<input type="text" class="appt-enter-student" name="studentname" placeholder="John Smith"/>
+							</div>
+							<ul id="sresults">
+						
+							</ul>
+							<div class="input-fields">
+								<label for="location">Location: </label>					
+								<input type="text" name="location" placeholder="(i.e. Office)"/>
+							</div>
+							<div class="input-fields">			
+								<label for="date">Date: </label>
+								<input type="text" id="datepicker" />
+							</div>
+							<div class="subform">
+								<fieldset>
+									<legend>Start and End Times</legend>
+										From
+										<select name="sHour" id="sHour">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<select name="sMin" id="sMin">
+											<option value="00">00</option>
+											<option value="15">15</option>
+											<option value="30">30</option>
+											<option value="45">45</option>
+										</select>
+
+										<select name="sampm" id="sampm">
+											<option value="pm">pm</option>
+											<option value="am">am</option>
+										</select>
+										</br>
+										until
+										<select name="eHour" id="eHour">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+										<select name="eMin" id="eMin">
+											<option value="00">00</option>
+											<option value="15">15</option>
+											<option value="30">30</option>
+											<option value="45">45</option>
+										</select>
+										<select name="eampm" id="eampm">
+											<option value="pm">pm</option>
+											<option value="am">am</option>
+										</select>							
+								</fieldset>
+							</div>
+							<div style="padding-top: 3%" class="add-button">								
+								<label for="submitAppt"></label>
+								<input type="submit" name="submitAppt" value="Add Appointment" class="lightblue-button">	
+							</div>
+						</form>	
 					</div>
 			  	</div>
 			</div>
 		</div>​
-	</body>
-</html>
+	<?php include('footer.php'); ?>
 

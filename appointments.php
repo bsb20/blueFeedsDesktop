@@ -62,6 +62,9 @@
 						<em>with $name</em>
 						</p>
 						<p>
+						Date:&nbsp;&nbsp;$date
+						</p>
+						<p>
 						Time: $formattedStart - $end
 						</p>
 						<p>
@@ -87,6 +90,9 @@
 						<em>with $name</em>
 						</p>
 						<p>
+						Date:&nbsp;&nbsp;$date
+						</p>
+						<p>
 						Time: $formattedStart - $end
 						</p>
 						<p>
@@ -101,12 +107,16 @@
 						$time="this month";
 						if($today['mon']==$month and $today['year']==$year)
 						{
-							$table.="							<div class='appointments-appointment'>
+							$table.="							
+							<div class='appointments-appointment'>
 						<p>
 						<strong>$title</strong>
 						</p>
 						<p>
 						<em>with $name</em>
+						</p>
+						<p>
+						Date:&nbsp;&nbsp;$date
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -123,12 +133,15 @@
 						$time="";
 						if($today['year']==$year)
 						{
-							$table.="						<div class='appointments-appointment'>
+							$table.="<div class='appointments-appointment'>
 						<p>
 						<strong>$title</strong>
 						</p>
 						<p>
 						<em>with $name</em>
+						</p>
+						<p>
+						Date:&nbsp;&nbsp;$date
 						</p>
 						<p>
 						Time: $formattedStart - $end
@@ -215,25 +228,25 @@
 			<div id="appointments-container">
 				<div id="appointments-filters">
 					<a href="./appointments.php?filter=today">																									
-						<button class="white-button">
+						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> Today
 							</span>
 						</button>	
 					</a>
 					<a href="./appointments.php?filter=thisweek">																												
-						<button class="white-button">
+						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> This Week
 							</span>
 						</button>
 					</a>
 					<a href="./appointments.php?filter=month">																															
-						<button class="white-button">
+						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> This Month
 							</span>
 						</button>
 					</a>
 					<a href="./appointments.php?filter=all">																															
-						<button class="white-button">
+						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> All
 							</span>
 						</button>
@@ -245,7 +258,6 @@
 					?></em>
 				</p>
 				<div id="appointments-appointments">
-					<table class="striped">
 						<?php
 							if(!$numAppt==0)
 							{
@@ -257,30 +269,11 @@
 					<p>
 						You currently have no appointments in this timeframe.
 					</p>
-					<div class='appointments-appointment'>
-						<p>
-						<h3>Coffee with Joe</h3>
-						</p>
-						<p>
-						<em>with Joe Shmo</em>
-						</p>
-						<p>
-						Date:&nbsp;&nbsp;6/27/13
-						</p>
-						<p>
-						Time:&nbsp;&nbsp;1:00pm - 4:30pm
-						</p>
-						<p>
-						Location:&nbsp;&nbsp;Starbucks
-						</p>
-					</div>
 					";
 							}
-						?>						
-					</table>
+						?>
 				</div>
 			</div>		
-		</div>​
-	</body>
-</html>
+		</div>
+	<?php include('footer.php'); ?>
 

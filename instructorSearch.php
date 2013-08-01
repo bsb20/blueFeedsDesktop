@@ -21,11 +21,11 @@ $repeated=array();
                  $spec=$row["speciality"];
                  $UUID=$row["UUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
-                    <a>
-                    <h1>$name</h1>
-                    <p>$title, $spec</p>
-                    </a>
-                    <input type='text' class='uuid' style='display:none' value='$UUID'>
+                    	<div class='result clearfix'>
+							<p class='result-name'>$name</p>
+							<p>$title, $spec</p>
+						</div>
+						<input type='text' class='suid' style='display:none' value='$SUID'>
                     </li>";
                 }
              }
