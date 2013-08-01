@@ -28,7 +28,8 @@
 		if($bytes)
 		{
                 echo "true";
-		//	header('Location: http://bluefeeds.cs.duke.edu/home/htdocs/desktop/RSS Feeds.php?success=' . $bytes);			
+                
+			header('Location: newsfeed.php');			
 		}
 		else
 		{
