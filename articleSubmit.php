@@ -2,7 +2,7 @@
 	/* Updates the xml file within /desktop/bluefeedsTest.xml */
 	/* Takes the following values: title, link, date, description */
 	session_start();
-	$filepath = "./blueFeedsTest.xml";
+	$filepath = "/var/www/blueFeedsTest.xml";
 
 	if (file_exists($filepath)) {
  		$title=$_POST["title"];
