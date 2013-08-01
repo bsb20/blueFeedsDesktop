@@ -148,7 +148,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							<?php echo $tags ?>
 						</div>
 						<ul id="previous-feedback-list">
-
+							<?php echo $comments ?>
 						</ul>
 					</div>
 			  	</div>
