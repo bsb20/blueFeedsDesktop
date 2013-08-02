@@ -831,9 +831,11 @@ a.ui-state-default.ui-state-active {
 	margin-top: 0;
 }
 
-.searchHead {
+.searchHead, .searchHead.ui-state-default {
 	padding-top: 15px;
 	font-size: 14px;
+	padding-left: 0;
+	padding-bottom: 0;
 }
 
 .search:hover {
@@ -858,7 +860,6 @@ a.ui-state-default.ui-state-active {
 .result-icon {
 	margin-right: 10px;
 	float:left;
-	height: 75px;
 	width: 75px;
 	background-color: rgba(0,0,0,.5);
 }
@@ -897,7 +898,7 @@ a.ui-state-default.ui-state-active {
 	background-color: rgba(38,65,108,1);
 }
 
-.ui-state-default {
+.tabs .ui-state-default {
 	display: inline-block;
 	padding: 10px;
 	padding-top: 20px;
@@ -906,7 +907,7 @@ a.ui-state-default.ui-state-active {
 	background-color: rgba(38,65,108,1);
 }
 
-.ui-tabs-active {
+.tabs .ui-tabs-active {
 	background-color: rgba(54,93,150,1);
 }
 
@@ -935,6 +936,12 @@ a.ui-state-default.ui-state-active {
 	margin-top: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.embedded-doc {
+	width: 100%;
+	height: 600px;	
 }
 
 #forms-feedback {
