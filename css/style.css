@@ -197,6 +197,18 @@ input {
 		0px 0px 0px rgba(54,93,150,1);
 }
 
+.lightblue-button:hover {
+	background-color: rgba(54,93,150,.5);
+	background: -moz-linear-gradient(
+		top,
+		rgba(38,65,108,.5) 0%,
+		rgba(38,65,108,.5));
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(rgba(54,93,150,.5)),
+		to(rgba(54,93,150,.5)));
+}
+
 .lightblue-button:active {
 	-webkit-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
 	-moz-box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
@@ -882,14 +894,19 @@ a.ui-state-default.ui-state-active {
 	text-align: center;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: rgba(38,65,108,1);
 }
 
-.tabs li {
+.ui-state-default {
 	display: inline-block;
 	padding: 10px;
 	padding-top: 20px;
 	padding-right: 20px;
 	padding-left: 20px;
+	background-color: rgba(38,65,108,1);
+}
+
+.ui-tabs-active {
 	background-color: rgba(54,93,150,1);
 }
 
@@ -1033,6 +1050,7 @@ a.ui-state-default.ui-state-active {
 	font-weight: 200;
 	padding: 5px;
 	width: 350px;
+	height: 200px;
 }
 
 .feedback-input {
@@ -1121,7 +1139,7 @@ a.ui-state-default.ui-state-active {
 	margin-top: 20px;
 }
 
-#newsfeed-list li {
+#newsfeed-list li, li.newsfeed-item {
 	padding: 20px;
 	margin-top: 20px;
 	background-color: rgba(38,65,108,1);

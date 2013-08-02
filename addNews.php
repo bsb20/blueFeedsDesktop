@@ -89,7 +89,7 @@
 					</div>					
 					<div class="input-fields">
 						<label for="location">Link: </label>					
-						<input class="addNews-input" type="text" name="link" placeholder="http://" />
+						<input class="addNews-input" type="text" name="link" placeholder="Please include http://" />
 					</div>
 					<div class="add-button">
 						<input type="submit" name="addNews" value="Add New Article" class="darkblue-button">	

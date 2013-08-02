@@ -23,18 +23,20 @@ foreach($xml->channel->item as $item)
 		$desc = $item->description;
 		
 		
-		$rss.="						<li>
-						<a>$title</a>
-						<div>
-							<h3>$title</h3>
+		$rss.="<a href=$link>
+				<li style='margin-top: 20px;' class='newsfeed-item'>
+					<div class='clearfix'>
+						<a href='./deleterss.php?title=$title'><button style='float:right;' class='lightblue-button delete-button'>x</button></a>
+						<h3>$title</h3>
+						<p class='news-description'>
 							$desc
-							<p>
-								$date
-							</p>
-							<a href=$link><button class='bg-color-blueLight'> Link </button></a>
-							<a href='./deleterss.php?title=$title'><button class='bg-color-red'> Delete </button></a>							
-						</div>
-					</li>";
+						</p>
+						<p>
+							$date
+						</p>							
+					</div>
+				</li>
+			</a>";
 	}
 	$_SESSION['rss'] = $rss;
 }	
