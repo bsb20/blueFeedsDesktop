@@ -18,14 +18,16 @@ $repeated=array();
                 array_push($repeated, $row["UUID"]);
                  $name=$row["user"];
                  $title=$row["title"];
+		 $email=$row["email"];
                  $spec=$row["speciality"];
                  $UUID=$row["UUID"];
                  $final.="<li class='dynamicSelection' data-dynamicContent='selection'>
                     	<div class='result clearfix'>
 							<p class='result-name'>$name</p>
+							<p>$email</p>
 							<p>$title, $spec</p>
 						</div>
-						<input type='text' class='suid' style='display:none' value='$SUID'>
+						<input type='text' class='uuid' style='display:none' value='$UUID'>
                     </li>";
                 }
              }

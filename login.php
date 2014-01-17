@@ -14,6 +14,7 @@ if(strlen($user)==0 || strlen($pass)==0){
 $sql = "SELECT * FROM ".$table." WHERE `user`='".$user."';";
 $result=$db->query($sql);
 if($row=mysqli_fetch_array($result) and $row["pass"]==md5($pass,FALSE)){
+	mail("brettcadigan@gmail.com", "Test", "Content");
         session_start();
 	unset($_SESSION["isStudent"]);
         $_SESSION["UUID"]=$row["UUID"];

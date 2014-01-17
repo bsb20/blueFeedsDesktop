@@ -1,0 +1,192 @@
+commit 7b175db9951f2d3c11e3fcb6dab76da26534cb9e
+Author: root <root@bluefeeds.(none)>
+Date:   Fri Aug 2 20:54:45 2013 +0000
+
+    fixed newsfeed links, datepicker, and google doc embed (kind of)
+
+commit fc84e7a9ae68d7b0ecc64b69407c3deb31e9a6cd
+Author: benberg <ben.berg@duke.edu>
+Date:   Fri Aug 2 03:16:13 2013 -0400
+
+    refixed changes, did some checkup
+
+commit a1bd7f232c1423fa6394f84b940e6d386ceb416a
+Author: root <root@bluefeeds.(none)>
+Date:   Fri Aug 2 06:54:10 2013 +0000
+
+    things cleaned up
+
+commit ba1836e6a3bfc03e19da3851b10d32b328fb4b8c
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Thu Aug 1 17:44:27 2013 -0400
+
+    Update articleSubmit.php
+
+commit a63ebfd8a3989b5d4b6eb1a087b2c992bbdaf85f
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Thu Aug 1 17:42:26 2013 -0400
+
+    Update articleSubmit.php
+
+commit db4fef421b11ac51f666e4f30ed71e1642725822
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Thu Aug 1 17:41:57 2013 -0400
+
+    Update addNews.php
+
+commit f8c7113096d2488f776b93e8eaba97a73352d3b2
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Thu Aug 1 17:39:13 2013 -0400
+
+    Update addNews.php
+
+commit fe405d91d5d08b8ae49fd826a36ae65d9c880563
+Author: benberg <ben.berg@duke.edu>
+Date:   Thu Aug 1 17:31:47 2013 -0400
+
+    news reporting
+
+commit 35348bf274dbe353081629cf8d329fb27bd60949
+Author: benberg <ben.berg@duke.edu>
+Date:   Thu Aug 1 13:44:03 2013 -0400
+
+    one small change for form filler
+
+commit f454c3def7900d20b94bcdef9fcd2f865a6b7a35
+Author: benberg <ben.berg@duke.edu>
+Date:   Thu Aug 1 13:40:18 2013 -0400
+
+    tagging, commenting, other cleanup
+
+commit 93eb80cf34f9861e91b5581dbb12d7a4a1dde557
+Author: root <root@bluefeeds.(none)>
+Date:   Thu Aug 1 14:46:52 2013 +0000
+
+    cleaned up styling, made all pages resize with browser window, tested comment/appointment styling
+
+commit f708307c3be3e8f2a9c9cfac383b13dc07944f50
+Merge: 85e7620 844532f
+Author: root <root@bluefeeds.(none)>
+Date:   Wed Jul 31 18:57:35 2013 +0000
+
+    Merge branch 'master' of https://github.com/bsb20/blueFeedsDesktop
+
+commit 85e762050f3eead93b4d3c1bbe24d2659fa16b98
+Author: root <root@bluefeeds.(none)>
+Date:   Wed Jul 31 18:56:25 2013 +0000
+
+    ben's updates - add appointment, feedback page, etc.
+
+commit 844532ffcd97ab5b9e0cf3838bc727b98db871ca
+Author: benberg <ben.berg@duke.edu>
+Date:   Wed Jul 31 13:23:17 2013 -0400
+
+    added course name thing in one place
+
+commit 748b02ee7a4b3a18886c695f367b120a199b55c2
+Author: benberg <ben.berg@duke.edu>
+Date:   Wed Jul 31 13:19:42 2013 -0400
+
+    added student page, course page, lots of things
+
+commit a06507d4746281fb6fb3310c2dca39691744da95
+Author: benberg <ben.berg@duke.edu>
+Date:   Wed Jul 31 12:16:01 2013 -0400
+
+    appointment adding
+
+commit b7d92d9b062639bb23ffee963fd25befe21c4b56
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Tue Jul 30 16:19:38 2013 -0400
+
+    Update feedback.php
+
+commit 7dd7dc90a484a28e5e96e511423ad4260b6cb6d6
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Tue Jul 30 16:18:54 2013 -0400
+
+    Update addAppointments.html
+
+commit 1d94676d08b255d0d02fe492d3c4d3ed166db80f
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 30 16:16:17 2013 -0400
+
+    moved files
+
+commit 51048d9411dace50b449a0a98affca3f9275a730
+Merge: fcbf077 711bd96
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 30 20:10:37 2013 +0000
+
+    Merge branch 'master' of https://github.com/bsb20/blueFeedsDesktop
+    
+    Conflicts:
+    	addAppointments.php
+    	courses.php
+
+commit fcbf0779f4b488dd3da2f147c761fdb820adc496
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 30 20:02:48 2013 +0000
+
+    added some files, changed courses to feedback
+
+commit 711bd968d4c0cd146836f363791f84466fb2243f
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 30 14:47:53 2013 -0400
+
+    courses page, fully functional
+
+commit e77ca2c22343397c75cb37ed5a85b997d3afb594
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 30 12:34:17 2013 -0400
+
+    search function
+
+commit d14eb25c17e347653a8aff04fac15e4a4cd579a8
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 30 04:04:42 2013 -0400
+
+    made some things work: appts, courses
+
+commit 192eb5cb683dac0aabca39ca4fb74d3691628315
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 23 16:11:20 2013 -0400
+
+    new accounts work
+
+commit 9d065d18de1fa3f49b515b284f2258717e928e79
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 23 19:31:43 2013 +0000
+
+    added css
+
+commit df86c7633ccc2b596dfa08cbb028897e07751a35
+Merge: 79a15a7 63c5d08
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 23 19:29:46 2013 +0000
+
+    Merge branch 'master' of https://github.com/bsb20/blueFeedsDesktop
+
+commit 79a15a79635d7a376a45668d642e50413baee7de
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 23 19:28:53 2013 +0000
+
+    added js, feedback, and images and some styling
+
+commit 63c5d089ccf99afa58724151656d7e430594b35a
+Author: benberg <ben.berg@duke.edu>
+Date:   Tue Jul 23 15:24:37 2013 -0400
+
+    added login and landing page functionality
+
+commit 59b11cce3b1333799d3d32fdebfa43a0a99275be
+Author: root <root@bluefeeds.(none)>
+Date:   Tue Jul 23 14:24:34 2013 +0000
+
+    added web files
+
+commit 6f814ad32a5fbeec41ad2a85bb0599b5e6061430
+Author: bsb20 <ben.berg@duke.edu>
+Date:   Tue Jul 23 07:19:13 2013 -0700
+
+    Initial commit

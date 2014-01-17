@@ -8,8 +8,10 @@
  		$title=$_POST["title"];
 		$link=$_POST["link"];
 		$date=$_POST["date"];		
-		$desc=$_POST["description"]; 	
-
+		$desc=$_POST["desc"]; 	
+		if(substr($link, 0,4)!="http" ){
+			$link="http://".$link;
+}	
 		$rss = file_get_contents($filepath);
 		$dom = new DOMDocument();	
 		$dom->loadXML($rss);

@@ -25,7 +25,11 @@ if($row=mysqli_fetch_array($result)){
 	$instruct="";
 	for($j=0; $j<mysqli_num_rows($result2); $j++){
 		if($row2=mysqli_fetch_array($result2)){
-			$instruct.=$row2["user"].", ";
+			$email="";
+			if ($row2["email"]){
+				$email=" (".$row2["email"].")";
+			}
+			$instruct.=$row2["user"]."$email, ";
 		}
 	}
 	$sql3="SELECT * FROM `test`.`gs`, `test`.`students` WHERE `test`.`gs`.`SUID`=`test`.`students`.`SUID` AND `test`.`gs`.`GUID`='$GUID';";

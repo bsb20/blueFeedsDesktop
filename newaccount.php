@@ -62,6 +62,9 @@
 			<p class="footer">
 				Website designed and built by <a href="mailto:org.glennon@gmail.com">Olivia Glennon</a>
 			</p>
+			<p class="footer">
+				Maintenence and troubleshooting by <a href="mailto:brettcadigan@gmail.com">Brett Cadigan</a>
+			</p>
 		</div>
 	</body>
 </html>

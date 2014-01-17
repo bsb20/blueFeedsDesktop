@@ -23,7 +23,7 @@ $repeated=array();
                  $SUID=$row["SUID"];
                  $final.="<li class='dynamicSelection' id='$name' data-dynamicContent='selection'>
                     	<div class='result clearfix'>
-							<img class='result-icon' src='../htdocs/$photo' />
+							<img class='result-icon' src='../../bluefeeds/htdocs/$photo' />
 							<p class='result-name'>$name</p>
 							<p>$title, $spec</p>
 						</div>
