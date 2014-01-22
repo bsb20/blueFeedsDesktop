@@ -82,7 +82,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 				<ul class="tabs">
 					<li><a href="#tab-previousfeedback"><span>Previous Feedback</span></a></li>
 					<li><a href="#tab-leavefeedback"><span>Leave Feedback</span></a></li>
-					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>
+<!--					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>-->
 					<li><a href="#tab-appointment"><span>Add Appointment</span></a></li>
 				</ul>
 			 	<div id="tab-previousfeedback">
@@ -152,7 +152,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 						</form>
 					</div>
 			  	</div>
-			  	<div id="tab-forms">
+<!--			  	<div id="tab-forms">
 			  		<h3>Complete printable forms for <?php echo "$name"?> for <?php echo $course ?></h3>
 					<div id="pdfs">
 						<iframe class="embedded-doc" src="https://docs.google.com/document/d/1guj99J1rP7jXL0wPH5IDPbSrVIrl6Wv3t6N2lAqes-M/pub?embedded=true"></iframe>
@@ -201,7 +201,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							</li>
 						</ul>
 					</div>
-			  	</div>
+			  	</div>-->
 			  	<div id="tab-appointment">
 			  		<h3>Make an appointment with <?php echo "$name"?></h3>
 			  		<div id="tab-appointment-container">
