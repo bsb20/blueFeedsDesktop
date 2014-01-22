@@ -57,13 +57,16 @@
 		</div>
 		<div id="footer">
 			<p class="footer">
-				The BlueFeeds application was built by Ben Berg, Rachel blahblah.
+				The BlueFeeds application was produced by Dr. Bruce Peyser and Dr. Lawrence Greenblatt.
 			</p>
 			<p class="footer">
-				Website designed and built by <a href="mailto:org.glennon@gmail.com">Olivia Glennon</a>
+				The BlueFeeds application is maintained by <a href="mailto:bluefeedsmail@gmail.com">Brett Cadigan</a>.
 			</p>
 			<p class="footer">
-				Maintenence and troubleshooting by <a href="mailto:brettcadigan@gmail.com">Brett Cadigan</a>
+				The BlueFeeds application was originally built by Ben Berg, Rachel Harris.
+			</p>
+			<p class="footer">
+				The desktop site was designed by <a href="mailto:org.glennon@gmail.com">Olivia Glennon</a>.
 			</p>
 		</div>
 	</body>
