@@ -141,10 +141,10 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 								<textarea class="feedback-textarea" placeholder="Type your comment here"></textarea>
 							</p>
 							<div class="add-button">
-								<label>Released to Students? <input type="checkbox" name="checkbox" value="value" /></label>
+								<label>Released to Students? <input type="checkbox" name="checkbox" value="value" checked/></label>
 							</div>
 							<div class="add-button">
-								<label>Released to Instructors? <input type="checkbox" name="checkbox" value="value" /></label>
+								<label>Released to Instructors? <input type="checkbox" name="checkbox" value="value" checked /></label>
 							</div>
 							<div class="add-button">
 								<button type="button" class="darkblue-button" value="">Leave feedback</button>

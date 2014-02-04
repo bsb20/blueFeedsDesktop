@@ -24,12 +24,12 @@ require_once "Mail.php";
      'password' => $password,
   ));
 
-$mail = $smtp->send($to, $headers, $body);
+ $mail = $smtp->send($to, $headers, $body);
 
- if (PEAR::isError($mail)) {
+/* if (PEAR::isError($mail)) {
    echo("<p>" . $mail->getMessage() . "</p>");
   } else {
    echo("<p>Message successfully sent!</p>");
-  }
+  }*/
 }
  ?>

@@ -80,31 +80,6 @@ if($row=mysqli_fetch_array($result)){
 								<span class="label" style="text-align: center;">$tag</span>
 							</button>
 						</a>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
 					</div>
 					<ul id="previous-feedback-list">
 						<?php echo $finally ?>

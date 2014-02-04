@@ -129,10 +129,10 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							<input style="display: none" type="text" name="GUID" value="<?php echo $GUID ?>"/>
 							<input style="display: none" type="text" name="SUID" value="<?php echo $SUID ?>"/>
 							<div class="add-button">
-								<label>Released to Students? <input type="checkbox" name="students" value="1" /></label>
+								<label>Released to Students? <input type="checkbox" name="students" value="1" checked/></label>
 							</div>
 							<div class="add-button">
-								<label>Released to Instructors? <input type="checkbox" name="instructors" value="1" /></label>
+								<label>Released to Instructors? <input type="checkbox" name="instructors" value="1" checked/></label>
 							</div>
 							<div class="add-button">
 								<button type="submit" class="darkblue-button" value="">Leave feedback</button>
