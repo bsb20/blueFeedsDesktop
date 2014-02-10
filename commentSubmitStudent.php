@@ -14,10 +14,15 @@ $text=$_POST["comment"];
 $title=$_POST["title"];
 $instructors=$_POST["instructors"];
 $students=true;
-$user=$_SESSION["tempUUID"];
-$GUID=$_SESSION["GUID"];
+$user=666;
+//$_POST["tempUUID"];
+//$GUID="5254bedc65ac9";
+$GUID=htmlspecialchars($_GET["course"]);
+//$GUID=$_POST["GUID"];
+//$GUID=$_SESSION["tempGUID"];
 $student=$_SESSION["SUID"];
-$CUID=$_POST["CUID"];
+$CUID=uniqid("",false);
+//$_POST["CUID"];
 $newTag=$_POST["new"];
 $tags=$_POST["tag"];
 
@@ -28,7 +33,7 @@ if($mailRow=mysqli_fetch_array($mailResult)){
 }
 $mailContent="Hello! Your have received a new student reply on BlueFeeds.
 
- ".$title.":
+ ".$title."
 ".$text."
 
 Please check your BlueFeeds account at http://www.dukebluefeeds.com/ for more details.";

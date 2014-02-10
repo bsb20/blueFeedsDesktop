@@ -15,6 +15,7 @@ if($row=mysqli_fetch_array($result)){
     $instructors=$row["instructors"];
     $time=strtotime($date);
     $formattedDate=date("m/d/y",$time);
+    //$_SESSION["tempUUID"]=$row["UUID"];
     }
             $finally.=                       "<li data-theme='d' class='listNote dynamicComment' data-dynamicContent='commentRetrieve' onClick='echoComment()' style='margin: 1%; overflow: visible; white-space: normal;'>
 						<p class='title'>$title</p>

