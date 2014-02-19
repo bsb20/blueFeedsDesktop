@@ -4,7 +4,7 @@ include('initialize.php');
 //$SUID=$_GET['id'];
 $SUID=$_SESSION["SUID"];
 $TUID=$_GET["filter"];
-$UUID=$_SESSION["UUID"];
+$UUID=$_POST["UUID"];
 $_SESSION["tempGUID"]=htmlspecialchars($_GET["course"]);
 $GUID=$_GET["course"];
 $sql="SELECT * FROM `test`.`students` WHERE `SUID`='$SUID'";
@@ -113,6 +113,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							</p>
 							<input style="display: none" type="text" name="GUID" value="<?php echo $GUID ?>"/>
 							<input style="display: none" type="text" name="SUID" value="<?php echo $SUID ?>"/>
+							<input style="display: none" type="text" name="UUID" value="<?php echo $UUID ?>"/>
 							<div class="add-button">
 								<label>Released to Co-Instructors? <input type="checkbox" name="instructors" value="1" checked/></label>
 							</div>

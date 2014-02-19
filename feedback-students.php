@@ -10,6 +10,7 @@ if($row=mysqli_fetch_array($result)){
     $title=$row["title"];
     $text=$row["text"];
     $CUID=$row["CUID"];
+    $UUID=$row["UUID"];
     $date=$row["date"];
     $students=$row["students"];
     $instructors=$row["instructors"];
@@ -21,9 +22,11 @@ if($row=mysqli_fetch_array($result)){
 						<p class='title'>$title</p>
 						<p class='comment'>$text</p>
 						<p class='author'> - $instructor</p>
+						<a href='http://www.dukebluefeeds.com/web/repo/feedback-students-reply2.php?course=$GUID&id=$SUID'><button class=lightblue-button>Reply</button></a>
                                                     <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
                                                     <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
                                                     <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
+                                                    <input type='text' name='UUID' value='$UUID' id='hiddenForm4' style='display: none;'>
 					</li>";}
 	$sql="SELECT * FROM `test`.`courses` WHERE `GUID`='$GUID'";
 	$result=$db->query($sql);
