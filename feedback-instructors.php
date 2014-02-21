@@ -43,11 +43,19 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 	if($row = mysqli_fetch_array($result)){
 		$tag=$row["TUID"];
 		$text=$row["text"];
+	    if($tag==$_GET["filter"]){
+		$tags.=	"<a href='./feedback-instructors.php?course=$GUID&id=$SUID&filter=$tag'>																															
+				<button class='darkblue-button filter-button'>
+					<span class='label' style='text-align: center;'>$text</span>
+				</button>
+			</a>";
+	    }else{
 		$tags.=	"<a href='./feedback-instructors.php?course=$GUID&id=$SUID&filter=$tag'>																															
 				<button class='white-button filter-button'>
 					<span class='label' style='text-align: center;'>$text</span>
 				</button>
 			</a>";
+		}
 		$tags2.="<input type='checkbox' name='tag[]' id='$tag' value='$tag'/><label for='$TUID'>$text</label>";
 	}
 }
@@ -137,7 +145,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 								<label>Released to Instructors? <input type="checkbox" name="instructors" value="1" checked/></label>
 							</div>
 							<div id=tagList>
-								<h4>Tags:</h4>
+								<h3>Tags:</h3>
 								<p><?php echo $tags2 ?></p>
 							</div>
 							<div class="add-button">
