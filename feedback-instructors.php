@@ -19,7 +19,7 @@ if(!isset($_GET["filter"])){
 $sql = "SELECT `test`.`comments`.`title`, `test`.`comments`.`text`, `test`.`users`.`user` FROM `test`.`comments`, `test`.`users` WHERE `test`.`comments`.`SUID`='$SUID' AND `test`.`comments`.`GUID`='$GUID' AND `test`.`users`.`UUID`=`test`.`comments`.`UUID` AND (`test`.`comments`.`UUID`='$UUID' OR `test`.`comments`.`instructors`='1') ORDER BY `test`.`comments`.`date` DESC";
 }
 else{
-$sql = "SELECT * FROM `test`.`tu` INNER JOIN `test`.`comments` ON `test`.`tu`.`CUID` = `test`.`comments`.`CUID` WHERE `test`.`comments`.`SUID` ='".$SUID."' AND `test`.`tu`.`TUID` ='".$TUID."' AND `comments`.`GUID`='$GUID';";
+$sql = "SELECT * FROM `test`.`tu` INNER JOIN `test`.`comments` ON `test`.`tu`.`CUID` = `test`.`comments`.`CUID` WHERE `test`.`comments`.`SUID` ='".$SUID."' AND `test`.`tu`.`TUID` ='".$TUID."' AND `comments`.`GUID`='$GUID' ORDER BY `test`.`comments`.`date` DESC";
 }
 $result=$db->query($sql);
 $comments="";
@@ -36,6 +36,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 	}
 }
 $tags="";
+$tags2="";
 $sql = "SELECT * FROM `test`.`tags` WHERE `UUID`='$UUID'";
 $result=$db->query($sql);
 for($i=0; $i<mysqli_num_rows($result); $i++){
@@ -47,6 +48,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 					<span class='label' style='text-align: center;'>$text</span>
 				</button>
 			</a>";
+		$tags2.="<input type='checkbox' name='tag[]' id='$tag' value='$tag'/><label for='$TUID'>$text</label>";
 	}
 }
 ?>
@@ -133,6 +135,10 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							</div>
 							<div class="add-button">
 								<label>Released to Instructors? <input type="checkbox" name="instructors" value="1" checked/></label>
+							</div>
+							<div id=tagList>
+								<h4>Tags:</h4>
+								<p><?php echo $tags2 ?></p>
 							</div>
 							<div class="add-button">
 								<button type="submit" class="darkblue-button" value="">Leave feedback</button>
