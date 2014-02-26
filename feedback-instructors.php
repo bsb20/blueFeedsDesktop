@@ -59,6 +59,19 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 		$tags2.="<input type='checkbox' name='tag[]' id='$tag' value='$tag'/><label for='$TUID'>$text</label>";
 	}
 }
+if($_GET["filter"]==""){
+	$tags.=	"<a href='./feedback-instructors.php?course=$GUID&id=$SUID'>
+		<button class='darkblue-button filter-button'>
+		<span class='label' style='text-align: center;'>All Comments</span>
+		</button>
+		</a>";
+}else{
+	$tags.=	"<a href='./feedback-instructors.php?course=$GUID&id=$SUID'>
+		<button class='white-button filter-button'>
+		<span class='label' style='text-align: center;'>All Comments</span>
+		</button>
+		</a>";
+}
 ?>
 
 <html>
@@ -120,7 +133,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 					<div id="feedback-students-filters">
 							<p>Filter feedback by tag:</p>
 							<?php echo $tags?>
-						</div>
+					</div>
 					<ul id="previous-feedback-list">
 						<?php echo $comments ?>
 					</ul>
