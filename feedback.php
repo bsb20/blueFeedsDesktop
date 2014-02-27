@@ -39,13 +39,19 @@ if($row=mysqli_fetch_array($result)){
 	for($j=0; $j<mysqli_num_rows($result3); $j++){
 		if($row2=mysqli_fetch_array($result3)){
 			if(!in_array($row2["user"],$duplicates)){
-			$student.="<a class='courses-instructors-studentlink' href=feedback-instructors.php?course=$GUID&id=".$row2["SUID"].">".$row2["user"]."</a>, ";
+				if($isStudent){
+					$student.=$row2["user"];
+				}else{
+					$student.="<a class='courses-instructors-studentlink' href=feedback-instructors.php?course=$GUID&id=".$row2["SUID"].">".$row2["user"]."</a>, ";
+				}
 			array_push($duplicates,$row2["user"]);
 			}
 		}
 	}
 $instruct=substr($instruct,0,strlen($instruct)-2);
-$student=substr($student,0,strlen($student)-2);
+if(!$isStudent){
+	$student=substr($student,0,strlen($student)-2);
+}
 if(isset($_SESSION["isStudent"])){
  $finally.=                       "<a class='courses-students-courselink' href='feedback-students.php?course=$GUID'>
 						<div class='courses-students-course'>

@@ -28,11 +28,23 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 		$title=$row["title"];
 		$comment=$row["text"];
 		$author=$row["user"];
+		$CUID=$row["CUID"];
+		$students=$row["students"];
+		$instructors=$row["instructors"];
 		$comments.= "			<li>
 							<p class='title'>$title</p>
 							<p class='comment'>$comment</p>
 							<p class='author'>- $author</p>
-						</li>";
+						</li>
+						<form action='commentEdit.php' method='POST'>
+						    <input class='lightblue-button' type='submit' value='Edit'/>
+                                                    <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
+                                                    <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
+                                                    <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
+                                                    <input type='text' name='title' value='$title' id='hiddenForm4' style='display: none;'>
+                                                    <input type='text' name='comment' value='$comment' id='hiddenForm5' style='display: none;'>
+						</form>		
+				";
 	}
 }
 $tags="";

@@ -18,15 +18,16 @@ if($row=mysqli_fetch_array($result)){
     $formattedDate=date("m/d/y",$time);
     //$_SESSION["tempUUID"]=$row["UUID"];
     }
-            $finally.=                       "<li data-theme='d' class='listNote dynamicComment' data-dynamicContent='commentRetrieve' onClick='echoComment()' style='margin: 1%; overflow: visible; white-space: normal;'>
+            $finally.=                       "<li data-theme='d' class='listNote dynamicComment' style='margin: 1%; overflow: visible; white-space: normal;'>
 						<p class='title'>$title</p>
 						<p class='comment'>$text</p>
 						<p class='author'> - $instructor</p>
-						<a href='http://www.dukebluefeeds.com/web/repo/feedback-students-reply2.php?course=$GUID&id=$SUID'><button class=lightblue-button>Reply</button></a>
+						<form action='feedback-students-reply2.php?course=$GUID&id=$SUID' method='POST'><input type='submit' class=lightblue-button value='Reply'>
                                                     <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
                                                     <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
                                                     <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
                                                     <input type='text' name='UUID' value='$UUID' id='hiddenForm4' style='display: none;'>
+						</form>
 					</li>";}
 	$sql="SELECT * FROM `test`.`courses` WHERE `GUID`='$GUID'";
 	$result=$db->query($sql);

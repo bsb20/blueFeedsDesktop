@@ -3,9 +3,10 @@
 include('initialize.php');
 //$SUID=$_GET['id'];
 $SUID=$_SESSION["SUID"];
-$TUID=$_GET["filter"];
+$TUID=$_POST["filter"];
 $UUID=$_POST["UUID"];
-$_SESSION["tempGUID"]=htmlspecialchars($_GET["course"]);
+$_SESSION["tempUUID"]=$UUID;
+$_SESSION["tempGUID"]=$_GET["course"];
 $GUID=$_GET["course"];
 $sql="SELECT * FROM `test`.`students` WHERE `SUID`='$SUID'";
 $result=$db->query($sql);

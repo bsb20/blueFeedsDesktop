@@ -15,12 +15,13 @@ $title=$_POST["title"];
 $instructors=$_POST["instructors"];
 $students=true;
 //$user=666;
-$user=$_POST["UUID"];
+//$user=$_POST["UUID"];
+$user=$_SESSION["tempUUID"];
 //$_POST["tempUUID"];
 //$GUID="5254bedc65ac9";
-$GUID=htmlspecialchars($_GET["course"]);
+//$GUID=$_GET["course"];
 //$GUID=$_POST["GUID"];
-//$GUID=$_SESSION["tempGUID"];
+$GUID=$_SESSION["tempGUID"];
 $student=$_SESSION["SUID"];
 $CUID=uniqid("",false);
 //$_POST["CUID"];
@@ -53,5 +54,7 @@ $db->real_query("INSERT INTO ".$table." (`UUID`, `SUID`, `date`, `text`, `CUID`,
 foreach ($tags as $TUID){
 	$db->real_query("INSERT INTO ".$tag_table." (`TUID`, `CUID`) VALUES ('$TUID', '$CUID');");
 }
-echo "true";
+header("location: feedback-students.php?course=$GUID");
+exit;
+//echo "true";
 ?>
