@@ -20,6 +20,13 @@ $result=$db->query($sql);
 if($row = mysqli_fetch_array($result)){
 	$course=$row["title"];
 }
+$sql="SELECT * FROM `test`.`comments` WHERE `CUID`='$CUID'";
+$result=$db->query($sql);
+if($row = mysqli_fetch_array($result)){
+	$students=$row["students"];
+	$instructors=$row["instructors"];
+	$comment=$row["text"];
+}
 ?>
 
 <html>
@@ -78,16 +85,19 @@ if($row = mysqli_fetch_array($result)){
 								<input class="feedback-input" type="text" name="title" value="<?php echo $title ?>"/>
 							</p>
 							<p>
-								<textarea class="feedback-textarea" name="comment" value="<?php echo $comment?>"></textarea>
+								<textarea class="feedback-textarea" name="comment" ><?php echo $comment ?></textarea>
 							</p>
+							<input type='text' class='hiddenForm' name='CUID' value="<?php echo $CUID ?>" style='display: none;'>
+							<input type='text' class='hiddenForm' name='GUID' value="<?php echo $GUID ?>" style='display: none;'>
+							<input type='text' class='hiddenForm' name='SUID' value="<?php echo $SUID ?>" style='display: none;'>
 							<div class="add-button">
-								<label>Released to Student? <input type="checkbox" name="students" value="<?php echo $students ?>" /></label>
+								<label>Released to Student? <input type="checkbox" name="students" value="1" checked /></label>
 							</div>
 							<div class="add-button">
-								<label>Released to Co-Instructors? <input type="checkbox" name="instructors" value="<?php echo $instructors ?>" /></label>
+								<label>Released to Co-Instructors? <input type="checkbox" name="instructors" value="1" checked /></label>
 							</div>
 							<div class="add-button">
-								<button type="submit" class="darkblue-button" value="">Leave Reply</button>
+								<button type="submit" class="lightblue-button" value="">Leave Reply</button>
 							</div>
 						</form>
 					</div>

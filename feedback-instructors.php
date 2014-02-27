@@ -16,7 +16,7 @@ if($row = mysqli_fetch_array($result)){
 	$course=$row["title"];
 }
 if(!isset($_GET["filter"])){
-$sql = "SELECT `test`.`comments`.`title`, `test`.`comments`.`text`, `test`.`users`.`user` FROM `test`.`comments`, `test`.`users` WHERE `test`.`comments`.`SUID`='$SUID' AND `test`.`comments`.`GUID`='$GUID' AND `test`.`users`.`UUID`=`test`.`comments`.`UUID` AND (`test`.`comments`.`UUID`='$UUID' OR `test`.`comments`.`instructors`='1') ORDER BY `test`.`comments`.`date` DESC";
+$sql = "SELECT `test`.`comments`.`title`, `test`.`comments`.`text`, `test`.`comments`.`CUID`, `test`.`users`.`user` FROM `test`.`comments`, `test`.`users` WHERE `test`.`comments`.`SUID`='$SUID' AND `test`.`comments`.`GUID`='$GUID' AND `test`.`users`.`UUID`=`test`.`comments`.`UUID` AND (`test`.`comments`.`UUID`='$UUID' OR `test`.`comments`.`instructors`='1') ORDER BY `test`.`comments`.`date` DESC";
 }
 else{
 $sql = "SELECT * FROM `test`.`tu` INNER JOIN `test`.`comments` ON `test`.`tu`.`CUID` = `test`.`comments`.`CUID` WHERE `test`.`comments`.`SUID` ='".$SUID."' AND `test`.`tu`.`TUID` ='".$TUID."' AND `comments`.`GUID`='$GUID' ORDER BY `test`.`comments`.`date` DESC";
@@ -29,21 +29,17 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 		$comment=$row["text"];
 		$author=$row["user"];
 		$CUID=$row["CUID"];
-		$students=$row["students"];
-		$instructors=$row["instructors"];
 		$comments.= "			<li>
 							<p class='title'>$title</p>
 							<p class='comment'>$comment</p>
 							<p class='author'>- $author</p>
-						</li>
-						<form action='commentEdit.php' method='POST'>
+						<form action='commentEdit.php?course=$GUID&id=$SUID' method='POST'>
 						    <input class='lightblue-button' type='submit' value='Edit'/>
                                                     <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
-                                                    <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
-                                                    <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
                                                     <input type='text' name='title' value='$title' id='hiddenForm4' style='display: none;'>
                                                     <input type='text' name='comment' value='$comment' id='hiddenForm5' style='display: none;'>
 						</form>		
+						</li>
 				";
 	}
 }
