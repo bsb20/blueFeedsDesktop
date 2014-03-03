@@ -7,7 +7,7 @@ include('initialize.php');
 	//$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
 $table="`test`.`feeds`";
 $UUID=$_SESSION["UUID"];
-$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID' OR `UUID`='a'";
+$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID'";// OR `UUID`='a'";
 $result=$db->query($sql);
 $rss = "";
 for($i=0; $i<mysqli_num_rows($result); $i++){

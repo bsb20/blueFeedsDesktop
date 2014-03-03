@@ -16,7 +16,7 @@ $spec=$_POST['study'];
 $SUID=uniqid("",FALSE);
 $_SESSION["SUID"]=$SUID;
 $id=$_POST["id"];
-$pass=md5($_POST["password"],FALSE);
+$pass=md5($_POST["pass"],FALSE);
 $sql = "SELECT * FROM ".$table." WHERE `user`='".$user."' OR `id`='$id';";
 $hasDuplicatesResult=$db->query($sql);
 if(mysqli_fetch_array($hasDuplicatesResult)){

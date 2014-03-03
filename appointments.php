@@ -3,6 +3,7 @@
 	$table="`test`.`students`";
 	$table2="`test`.`appointments`";
 	$UUID=$_SESSION["UUID"];
+	$isStudent=$_SESSION["isStudent"];
 	$final="";
 	$sql = "SELECT * FROM $table,$table2 WHERE $table.`SUID`=$table2.`SUID` AND $table2.`UUID`='$UUID' ORDER BY `start`;";
 	$result=$db->query($sql);
@@ -221,7 +222,7 @@
 						View Appointments
 					</li>
 					<li id="subnav-addAppointments">
-						<a href="addAppointments.html">Add Appointments</a>
+						<?php if(!$isStudent){echo '<a href="addAppointments.html">Add Appointments</a>';}else echo "";?>
 					</li>
 				</ul>
 			</div>

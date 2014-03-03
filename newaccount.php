@@ -45,8 +45,8 @@
 							<p class="form">Password: <input type="password" name="pass"></p>
 							<p class="form">Confirm Password: <input type="password" name="passc"></p>
 							<p class="form">E-mail Address: <input type="text" name="email"></p>
-							<p class="form">Title: <input type="text" name="title" placeholder="(e.g. Resident)"></p>
-							<p class="form">Area of Study: <input type="study" name="area"></p>
+							<p class="form">Title: <input type="text" name="title" placeholder="(e.g. Student)"></p>
+							<p class="form">Area of Study: <input type="text" name="study"></p>
 						</div>
 						<div class="add-button">
 							<button id="newStudent" type="submit" class="darkblue-button" value="">Create Account</button>
