@@ -134,7 +134,7 @@ if($_GET["filter"]==""){
 					<li><a href="#tab-previousfeedback"><span>Previous Feedback</span></a></li>
 					<li><a href="#tab-leavefeedback"><span>Leave Feedback</span></a></li>
 <!--					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>-->
-					<li><a href="#tab-appointment"><span>Add Appointment</span></a></li>
+<!--					<li><a href="#tab-appointment"><span>Add Appointment</span></a></li>-->
 				</ul>
 			 	<div id="tab-previousfeedback">
 					<h3><?php echo "$name"?>'s Previous Feedback for <?php echo $course ?></h3>
@@ -191,7 +191,7 @@ if($_GET["filter"]==""){
 						</ul>
 					</div>
 			  	</div>-->
-			  	<div id="tab-appointment">
+<!--			  	<div id="tab-appointment">
 			  		<h3>Make an appointment with <?php echo "$name"?></h3>
 			  		<div id="tab-appointment-container">
 						<h3 class="centered">Appointment Information</h3>
@@ -278,7 +278,7 @@ if($_GET["filter"]==""){
 							</div>
 						</form>	
 					</div>
-			  	</div>
+			  	</div>-->
 			</div>
 		</div>​
 	<?php include('footer.php'); ?>

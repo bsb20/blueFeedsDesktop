@@ -34,6 +34,45 @@ if($row=mysqli_fetch_array($result)){
 	if($row=mysqli_fetch_array($result)){
 		$name=$row["title"];
 	}
+
+
+$tags="";
+$tags2="";
+$sql = "SELECT * FROM `test`.`tags` WHERE `UUID`='$UUID'";
+$result=$db->query($sql);
+for($i=0; $i<mysqli_num_rows($result); $i++){
+	if($row = mysqli_fetch_array($result)){
+		$tag=$row["TUID"];
+		$text=$row["text"];
+	    if($tag==$_GET["filter"]){
+		$tags.=	"<a href='./feedback-students.php?course=$GUID&filter=$tag'>																															
+				<button class='darkblue-button filter-button'>
+					<span class='label' style='text-align: center;'>$text</span>
+				</button>
+			</a>";
+	    }else{
+		$tags.=	"<a href='./feedback-students.php?course=$GUID&filter=$tag'>																															
+				<button class='white-button filter-button'>
+					<span class='label' style='text-align: center;'>$text</span>
+				</button>
+			</a>";
+		}
+		$tags2.="<input type='checkbox' name='tag[]' id='$tag' value='$tag'/><label for='$TUID'>$text</label>";
+	}
+}
+if($_GET["filter"]==""){
+	$tags.=	"<a href='./feedback-students.php?course=$GUID'>
+		<button class='darkblue-button filter-button'>
+		<span class='label' style='text-align: center;'>All Comments</span>
+		</button>
+		</a>";
+}else{
+	$tags.=	"<a href='./feedback-students.php?course=$GUID'>
+		<button class='white-button filter-button'>
+		<span class='label' style='text-align: center;'>All Comments</span>
+		</button>
+		</a>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,11 +119,7 @@ if($row=mysqli_fetch_array($result)){
 					</h3>
 					<div id="feedback-students-filters">
 						<p>Filter feedback by tag:</p>
-						<a href="./feedback-students.php?filter=$tag">																															
-							<button class="white-button filter-button">
-								<span class="label" style="text-align: center;">$tag</span>
-							</button>
-						</a>
+						<?php echo $tags;?>
 					</div>
 					<ul id="previous-feedback-list">
 						<?php echo $finally ?>
