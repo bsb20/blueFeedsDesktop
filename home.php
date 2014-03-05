@@ -4,6 +4,7 @@ $table="`test`.`students`";
 $table2="`test`.`appointments`";
 $GUID=$_SESSION["GUID"];
 $UUID=$_SESSION["UUID"];
+$isStudent=$_SESSION["isStudent"];
 $final="";
 $sql = "SELECT * FROM $table,$table2 WHERE $table.`SUID`=$table2.`SUID` AND $table2.`UUID`='$UUID' ORDER BY `start`;";
 $result=$db->query($sql);
@@ -190,9 +191,9 @@ $_SESSION['buttons'] = $buttons;
 					<li id="navbar-Feedback">
 						<a href="feedback.php">Feedback</a>
 					</li>
-					<li id="navbar-NewsFeed">
+					<?php if(!$isStudent){echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
-					</li>
+					</li>';}?>
 				</ul>
 			</div>
 			<div id="home" class="clearfix">
@@ -227,17 +228,14 @@ $_SESSION['buttons'] = $buttons;
 							</p>
 						</div>
 					</div>
-					<div id="recentNews">
+					<?php if(!$isStudent){echo '<div id="recentNews">
 						<h3>Recent News</h3>
-						<ul class="landing-news" data-role="accordion">
-							<?php
-								echo $rss;
-							?>                    
+						<ul class="landing-news" data-role="accordion">'.$rss.'
 						</ul>
 						<p class="more-link">
 							<a href="newsfeed.php">News Feed &rarr;</a>
 						</p>
-					</div>
+					</div>';}?>
 				</div>
 			</div>
 		</div>

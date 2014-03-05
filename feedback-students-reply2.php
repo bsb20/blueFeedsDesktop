@@ -8,6 +8,7 @@ $UUID=$_POST["UUID"];
 $_SESSION["tempUUID"]=$UUID;
 $_SESSION["tempGUID"]=$_GET["course"];
 $GUID=$_GET["course"];
+$isStudent=$_SESSION["isStudent"];
 $sql="SELECT * FROM `test`.`students` WHERE `SUID`='$SUID'";
 $result=$db->query($sql);
 if($row = mysqli_fetch_array($result)){
@@ -89,15 +90,15 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 					<li id="navbar-Feedback">
 						<a href="feedback.php">Feedback</a>
 					</li>
-					<li id="navbar-NewsFeed">
+					<?php if(!$isStudent){echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
-					</li>
+					</li>';}?>
 				</ul>
 			</div>
 			<div id="subnav">
 				<ul>
 					<li id="subnav-NewsFeed">
-						<a href="feedback-students.php">&larr; Back to Feedback List</a>
+						<?php echo '<a href="feedback-students.php?course='.$GUID.'">&larr; Back to Feedback List</a>';?>
 					</li>
 				</ul>
 			</div>

@@ -145,9 +145,9 @@ else{
 					<li id="navbar-Feedback">
 						Feedback
 					</li>
-					<li id="navbar-NewsFeed">
+					<?php if(!$isStudent){echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
-					</li>
+					</li>';}?>
 				</ul>
 			</div>
 			<div id="courses-container">

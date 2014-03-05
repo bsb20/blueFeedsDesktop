@@ -2,6 +2,7 @@
 	include('initialize.php');
 	$SUID=$_SESSION["SUID"];
 	$GUID=$_GET["course"];
+	$isStudent=$_SESSION["isStudent"];
 	$sql=$sql="SELECT * FROM `test`.`comments` WHERE `SUID`='$SUID' AND `GUID`='$GUID' AND `students`='1' ORDER BY `date` DESC";
 	$result=$db->query($sql);
 $finally="";
@@ -22,7 +23,7 @@ if($row=mysqli_fetch_array($result)){
 						<p class='title'>$title</p>
 						<p class='comment'>$text</p>
 						<p class='author'> - $instructor</p>
-						<form action='feedback-students-reply2.php?course=$GUID&id=$SUID' method='POST'><input type='submit' class=lightblue-button value='Reply'>
+						<form action='feedback-students-reply2.php?course=$GUID' method='POST'><input type='submit' class=lightblue-button value='Reply'>
                                                     <input type='text' name='CUID' value='$CUID' class='hiddenForm' style='display: none;'>
                                                     <input type='text' name='students' value='$students' id='hiddenForm2' style='display: none;'>
                                                     <input type='text' name='instructors' value='$instructors' id='hiddenForm3' style='display: none;'>
@@ -107,9 +108,9 @@ if($_GET["filter"]==""){
 					<li id="navbar-Feedback">
 						Feedback
 					</li>
-					<li id="navbar-NewsFeed">
+					<?php if(!$isStudent){echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
-					</li>
+					</li>';}?>
 				</ul>
 			</div>
 			<div id="feedback-container">

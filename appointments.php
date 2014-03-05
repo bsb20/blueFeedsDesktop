@@ -4,6 +4,7 @@
 	$table2="`test`.`appointments`";
 	$UUID=$_SESSION["UUID"];
 	$isStudent=$_SESSION["isStudent"];
+	$filter=$_GET["filter"];
 	$final="";
 	$sql = "SELECT * FROM $table,$table2 WHERE $table.`SUID`=$table2.`SUID` AND $table2.`UUID`='$UUID' ORDER BY `start`;";
 	$result=$db->query($sql);
@@ -211,9 +212,10 @@
 					<li id="navbar-Feedback">
 						<a href="feedback.php">Feedback</a>
 					</li>
-					<li id="navbar-NewsFeed">
+					<?php if(!$isStudent){ 
+					echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
-					</li>
+					</li>';}?>
 				</ul>
 			</div>
 			<div id="subnav">
@@ -228,30 +230,54 @@
 			</div>
 			<div id="appointments-container">
 				<div id="appointments-filters">
-					<a href="./appointments.php?filter=today">																									
+					<?php if($filter=="today"){ echo '<a href="./appointments.php?filter=today">
+						<button class="lightblue-button filter-button">
+							<span class="label" style="text-align: center;"> Today
+							</span>
+						</button>	
+					</a>';}
+				      	else{ echo '<a href="./appointments.php?filter=today">			
 						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> Today
 							</span>
 						</button>	
-					</a>
-					<a href="./appointments.php?filter=thisweek">																												
+					</a>';}?>
+					<?php if($filter=="thisweek"){echo '<a href="./appointments.php?filter=thisweek">
+						<button class="lightblue-button filter-button">
+							<span class="label" style="text-align: center;"> This Week
+							</span>
+						</button>
+					</a>';}
+					else{echo '<a href="./appointments.php?filter=thisweek">
 						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> This Week
 							</span>
 						</button>
-					</a>
-					<a href="./appointments.php?filter=month">																															
+					</a>';}?>
+					<?php if($filter=="month"){echo '<a href="./appointments.php?filter=month">
+						<button class="lightblue-button filter-button">
+							<span class="label" style="text-align: center;"> This Month
+							</span>
+						</button>
+					</a>';}
+					else{echo '<a href="./appointments.php?filter=month">
 						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> This Month
 							</span>
 						</button>
-					</a>
-					<a href="./appointments.php?filter=all">																															
+					</a>';}?>
+					<?php if($filter=="all"||$filter==""){echo '<a href="./appointments.php?filter=all">
+						<button class="lightblue-button filter-button">
+							<span class="label" style="text-align: center;"> All
+							</span>
+						</button>
+					</a>';}
+					else{echo '<a href="./appointments.php?filter=all">
 						<button class="white-button filter-button">
 							<span class="label" style="text-align: center;"> All
 							</span>
 						</button>
-					</a>
+					</a>';}?>
 				</div>							
 				<p>
 					<em><?php
