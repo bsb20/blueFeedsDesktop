@@ -101,6 +101,7 @@ if($row=mysqli_fetch_array($result)){
 $_SESSION["recentComment2"]=$recentComment2;
 
 /* Populates the rss with the links from the xml file */
+/*
 $table="`test`.`feeds`";
 $UUID=$_SESSION["UUID"];
 $sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID' OR `UUID`='a'";
@@ -129,7 +130,7 @@ foreach($xml->channel->item as $item)
         break;
     }
 }
-}
+}*/
 
 
 $table="`test`.`groups`";

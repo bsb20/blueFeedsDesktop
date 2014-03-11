@@ -163,9 +163,9 @@ else{
 					<?php
 					echo $finally;
 					?>
-					<div class="add-button">
+					<!--<div class="add-button">
 						<a href="addCourse.php"><button type="button" class="darkblue-button" value="">Add a New Course</button></a>
-					</div>
+					</div>-->
 				</div>
 			</div>		
 		</div>​

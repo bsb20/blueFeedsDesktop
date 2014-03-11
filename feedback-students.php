@@ -106,7 +106,7 @@ if($_GET["filter"]==""){
 						<a href="appointments.php">Appointments</a>
 					</li>
 					<li id="navbar-Feedback">
-						Feedback
+						<a href="feedback.php">Feedback</a>
 					</li>
 					<?php if(!$isStudent){echo '<li id="navbar-NewsFeed">
 						<a href="newsfeed.php">News Feed</a>
