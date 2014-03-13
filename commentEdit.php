@@ -100,6 +100,14 @@ if($row = mysqli_fetch_array($result)){
 								<button type="submit" class="lightblue-button" value="">Leave Reply</button>
 							</div>
 						</form>
+						<div>
+						<form action="commentDelete.php" method="post">
+							<input type='text' class='hiddenForm' name='CUID' value="<?php echo $CUID ?>" style='display: none;'>
+							<input type='text' class='hiddenForm' name='GUID' value="<?php echo $GUID ?>" style='display: none;'>
+							<input type='text' class='hiddenForm' name='SUID' value="<?php echo $SUID ?>" style='display: none;'>
+							<button type="submit" class="lightblue-button" id="delete-button" value="">Delete Note</button>
+						</form>
+						</div>
 					</div>
 			  	</div>
 		</div>​

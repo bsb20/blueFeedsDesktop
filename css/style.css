@@ -222,7 +222,11 @@ input {
 	margin-top: 20px;
 	width: 100%;
 }
-
+#delete-button {
+	text-align: center;
+	margin-top: 40px;
+	margin-left: 35%;
+}
 .subform {
 	background-color: rgba(38,65,108,1);
 	padding: 10px;
