@@ -469,6 +469,10 @@ h3.large {
 	margin-left: 20px;
 }
 
+#home-middle {
+	margin: 0 auto;
+}
+
 #appointments {
 	background-color: rgba(54,93,150,1);
 	width: 100%;

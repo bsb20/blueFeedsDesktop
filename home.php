@@ -199,7 +199,8 @@ $_SESSION['buttons'] = $buttons;
 			</div>
 			<div id="home" class="clearfix">
 				<div id="home-container" class="clearfix">
-					<div id="home-left">
+					<?php if(!$isStudent){echo '<div id="home-left">';}
+else {echo '<div id="home-middle">';}?>
 						<div id="appointments">
 							<h3>This Week's Appointments</h3>
 							<ul>

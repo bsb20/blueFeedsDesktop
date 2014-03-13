@@ -72,7 +72,7 @@ if($row = mysqli_fetch_array($result)){
 			<div id="subnav">
 				<ul>
 					<li id="subnav-NewsFeed">
-						<a href="feedback-instructors.php">&larr; Back to Feedback List</a>
+						<a href="feedback-instructors.php?course=<?php echo $GUID;?>&id=<?php echo $SUID;?>">&larr; Back to Feedback List</a>
 					</li>
 				</ul>
 			</div>
