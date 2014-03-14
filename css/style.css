@@ -919,7 +919,7 @@ a.ui-state-default.ui-state-active {
 	background-color: rgba(54,93,150,1);
 }
 
-#tab-previousfeedback, #tab-leavefeedback, #tab-forms, #tab-appointment {
+#tab-previousfeedback, #tab-leavefeedback, #tab-forms, #tab-appointment, #tab-removestudent {
 	padding: 20px;
 }
 

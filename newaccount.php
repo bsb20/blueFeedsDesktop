@@ -63,7 +63,7 @@
 				The BlueFeeds application is maintained by <a href="mailto:bluefeedsmail@gmail.com">Brett Cadigan</a>.
 			</p>
 			<p class="footer">
-				The BlueFeeds application was originally built by Ben Berg, Rachel Harris.
+				The BlueFeeds application was originally built by Ben Berg, Rachel Harris, Conrad Haynes, and Jack Zhang.
 			</p>
 			<p class="footer">
 				The desktop site was designed by <a href="mailto:org.glennon@gmail.com">Olivia Glennon</a>.

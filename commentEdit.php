@@ -3,19 +3,19 @@
 include('initialize.php');
 $SUID=$_GET['id'];
 //$TUID=$_POST["filter"];
-//$UUID=$_POST["UUID"];
+$UUID=$_SESSION["UUID"];
 $GUID=$_GET["course"];
 $title=$_POST["title"];
 $comment=$_POST["comment"];
 $students=$_POST["students"];
 $instructors=$_POST["instructors"];
 $CUID=$_POST["CUID"];
-$sql="SELECT * FROM `test`.`students` WHERE `SUID`='$SUID'";
+$sql="SELECT `user` FROM `test`.`students` WHERE `SUID`='$SUID'";
 $result=$db->query($sql);
 if($row = mysqli_fetch_array($result)){
 	$name=$row["user"];
 }
-$sql="SELECT * FROM `test`.`courses` WHERE `GUID`='$GUID'";
+$sql="SELECT `title` FROM `test`.`courses` WHERE `GUID`='$GUID'";
 $result=$db->query($sql);
 if($row = mysqli_fetch_array($result)){
 	$course=$row["title"];
@@ -27,6 +27,18 @@ if($row = mysqli_fetch_array($result)){
 	$instructors=$row["instructors"];
 	$comment=$row["text"];
 }
+
+
+/*$tags2="";
+$sqlTags = "SELECT * FROM `test`.`tags` WHERE `UUID`='$UUID'";
+$result=$db->query($sqlTags);
+for($i=0; $i<mysqli_num_rows($result); $i++){
+	if($row = mysqli_fetch_array($result)){
+		$tag=$row["TUID"];
+		$text=$row["text"];
+		$tags2.="<input type='checkbox' name='tag[]' id='$tag' value='$tag'/><label for='$tag'>$text</label>";
+	}
+}*/
 ?>
 
 <html>
@@ -95,6 +107,10 @@ if($row = mysqli_fetch_array($result)){
 							</div>
 							<div class="add-button">
 								<label>Released to Co-Instructors? <input type="checkbox" name="instructors" value="1" checked /></label>
+							</div>
+							<div id=tagList2>
+								<h3>Tags:</h3>
+								<p><?php echo $tags2 ?></p>
 							</div>
 							<div class="add-button">
 								<button type="submit" class="lightblue-button" value="">Leave Reply</button>

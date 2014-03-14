@@ -133,6 +133,7 @@ if($_GET["filter"]==""){
 				<ul class="tabs">
 					<li><a href="#tab-previousfeedback"><span>Previous Feedback</span></a></li>
 					<li><a href="#tab-leavefeedback"><span>Leave Feedback</span></a></li>
+					<li><a href="#tab-removestudent"><span>Remove Student</span></a></li>
 <!--					<li><a href="#tab-forms"><span>Complete Forms</span></a></li>-->
 <!--					<li><a href="#tab-appointment"><span>Add Appointment</span></a></li>-->
 				</ul>
@@ -175,110 +176,18 @@ if($_GET["filter"]==""){
 						</form>
 					</div>
 			  	</div>
-<!--			  	<div id="tab-forms">
-			  		<h3>Complete printable forms for <?php echo "$name"?> for <?php echo $course ?></h3>
-					<div id="pdfs">
-						<iframe class="embedded-doc" src="https://docs.google.com/document/d/1guj99J1rP7jXL0wPH5IDPbSrVIrl6Wv3t6N2lAqes-M/pub?embedded=true"></iframe>
-					</div>
-					<div id="forms-feedback">
-						<p><?php echo "$name"?>'s Previous Feedback for <?php echo $course ?></p>
-						<div id="feedback-students-filters">
-							<p>Filter feedback by tag:</p>
-							<?php echo $tags ?>
+				<div id="tab-removestudent">
+					<h3>Remove Student from this Course</h3>
+					<div id="removeStudentForm">
+					<form action="removeStudent.php" method="post">
+						<input style="display: none" type="text" name="GUID" value="<?php echo $GUID ?>"/>
+						<input style="display: none" type="text" name="SUID" value="<?php echo $SUID ?>"/>
+						<div class="add-button">
+							<button type="submit" class="darkblue-button" value="">Remove Student</button>
 						</div>
-						<ul id="previous-feedback-list">
-							<?php echo $comments ?>
-						</ul>
+					</form>
 					</div>
-			  	</div>-->
-<!--			  	<div id="tab-appointment">
-			  		<h3>Make an appointment with <?php echo "$name"?></h3>
-			  		<div id="tab-appointment-container">
-						<h3 class="centered">Appointment Information</h3>
-						<form id="add-appointments-form" action="addAppointments.php" method="post">
-							<div class="input-fields">
-								<label for="title">Title: </label>					
-								<input type="text" name="title" placeholder="(i.e. Coffee with Joe)"/>
-							</div>
-							<div class="input-fields appt-add-student">
-								<label for="studentname">Student: </label>					
-								<input type="text" class="appt-enter-student" name="studentname" placeholder="John Smith"/>
-							</div>
-							<ul id="sresults">
-						
-							</ul>
-							<div class="input-fields">
-								<label for="location">Location: </label>					
-								<input type="text" name="location" placeholder="(i.e. Office)"/>
-							</div>
-							<div class="input-fields">			
-								<label for="date">Date: </label>
-								<input type="text" id="datepicker" />
-							</div>
-							<div class="subform">
-								<fieldset>
-									<legend>Start and End Times</legend>
-										From
-										<select name="sHour" id="sHour">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-										</select>
-										<select name="sMin" id="sMin">
-											<option value="00">00</option>
-											<option value="15">15</option>
-											<option value="30">30</option>
-											<option value="45">45</option>
-										</select>
-
-										<select name="sampm" id="sampm">
-											<option value="pm">pm</option>
-											<option value="am">am</option>
-										</select>
-										</br>
-										until
-										<select name="eHour" id="eHour">
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
-										</select>
-										<select name="eMin" id="eMin">
-											<option value="00">00</option>
-											<option value="15">15</option>
-											<option value="30">30</option>
-											<option value="45">45</option>
-										</select>
-										<select name="eampm" id="eampm">
-											<option value="pm">pm</option>
-											<option value="am">am</option>
-										</select>							
-								</fieldset>
-							</div>
-							<div style="padding-top: 3%" class="add-button">								
-								<label for="submitAppt"></label>
-								<input type="submit" name="submitAppt" value="Add Appointment" class="lightblue-button">	
-							</div>
-						</form>	
-					</div>
-			  	</div>-->
+				</div>
 			</div>
 		</div>​
 	<?php include('footer.php'); ?>
