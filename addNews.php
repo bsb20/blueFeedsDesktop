@@ -1,5 +1,8 @@
 <?php
-	/* RSS Feed split with the publishing form on the right */
+include("initialize.php");
+$UUID=$_SESSION["UUID"];
+
+	/* RSS Feed split with the publishing form on the right
 	session_start();
 	$filepath = "/home/htdocs/desktop/bluefeedsTest.xml";
 	$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
@@ -11,7 +14,7 @@
 		$date = $item->date;
 		$desc = $item->description;
 		
-		/* Populates rss feed split html with links and buttons */
+		/* Populates rss feed split html with links and buttons
 		$rss.="						<li>
 						<a>$title</a>
 						<div>
@@ -25,7 +28,7 @@
 						</div>
 					</li>";
 	}
-	$_SESSION['rss'] = $rss;
+	$_SESSION['rss'] = $rss;*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,18 +81,17 @@
 			</div>
 			<div id="addNews-container">
 				<h3 class="centered">Article Information</h3>
-				<form id="add-article-form" action="articleSubmit.php" method="post">
+				<form id="add-article-form" action="addFeed.php" method="post">
 					<div class="input-fields">
 						<label for="title">Title: </label>					
 						<input class="addNews-input" type="text" name="title" placeholder="New Methods in Teaching Medical Students"/>
 					</div>
 					<div class="input-fields">
-						<label for="studentname">Description: </label>					
-						<input class="addNews-input" type="text" name="desc" />
-					</div>					
-					<div class="input-fields">
 						<label for="location">Link: </label>					
 						<input class="addNews-input" type="text" name="link" placeholder="Please include http://" />
+					</div>
+					<div class="hiddenForm">
+						<input type="text" name="UUID" style="display:none" value="<? echo $UUID ?>"/>
 					</div>
 					<div class="add-button">
 						<input type="submit" name="addNews" value="Add New Article" class="darkblue-button">	

@@ -36,5 +36,6 @@ $_SESSION['AUID']=$AUID;
 
 
 $db->real_query("INSERT INTO ".$table." (`UUID`, `SUID`, `start`, `end`, `title`, `location`, `AUID`) VALUES ('$user', '$student', '$sDateTime', '$eDateTime', '$title', '$location', '$AUID');");
-header("Location: appointments.php")
+header("Location: appointments.php");
+exit;
 ?>

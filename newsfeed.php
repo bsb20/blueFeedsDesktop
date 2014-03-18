@@ -7,40 +7,29 @@ include('initialize.php');
 	//$xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'].$filepath);
 $table="`test`.`feeds`";
 $UUID=$_SESSION["UUID"];
-$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID'";// OR `UUID`='a'";
+$sql = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID'";
 $result=$db->query($sql);
 $rss = "";
 for($i=0; $i<mysqli_num_rows($result); $i++){
     if($row=mysqli_fetch_array($result)){
 	$url=$row["url"];
+	$title=$row["title"];
+	$date=$row["date"];
     }
-$xml =simplexml_load_file($url);
-foreach($xml->channel->item as $item)
-	{
-		$title = $item->title;
-		$link = $item->link;
-		$date = $item->date;
-		$desc = $item->description;
-		
-		
-		$rss="<li style='margin-top: 20px;' class='newsfeed-item'>
-					<div class='clearfix'>
-						<a href='./deleterss.php?title=$title'><button style='float:right;' class='lightblue-button delete-button'>x</button></a>
-						<a href=$link>
-							<h3>$title</h3>
-							<p class='news-description'>
-								$desc
-							</p>
-						</a>
-						<p>
-							$date
-						</p>							
-					</div>
-				</li>
+//$xml =simplexml_load_file($url);
+	$rss="<li style='margin-top: 20px;' class='newsfeed-item'>
+			<a href=$url>
+				<div class='clearfix'>
+						<h3>$title</h3>
+					<p>
+						$date
+					</p>							
+				</div>
+			</a>
+		</li>
 			".$rss;
-	}
-	$_SESSION['rss'] = $rss;
 }	
+$_SESSION['rss'] = $rss;
 ?>
 <!DOCTYPE html>
 <html>

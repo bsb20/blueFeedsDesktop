@@ -131,7 +131,27 @@ foreach($xml->channel->item as $item)
     }
 }
 }*/
-
+$sqlF = "SELECT * FROM `test`.`feeds` WHERE `UUID`='$UUID'";
+$resultF=$db->query($sqlF);
+$rss = "";
+for($i=0; $i<mysqli_num_rows($resultF); $i++){
+    if($row=mysqli_fetch_array($resultF)){
+	$url=$row["url"];
+	$title=$row["title"];
+	$date=$row["date"];
+    }
+	$rss="<li style='margin-top: 20px;' class='newsfeed-item'>
+			<a href=$url>
+				<div class='clearfix'>
+						<h3>$title</h3>
+					<p>
+						$date
+					</p>							
+				</div>
+			</a>
+		</li>
+			".$rss;
+}
 
 $table="`test`.`groups`";
 $table1="`test`.`courses`";
