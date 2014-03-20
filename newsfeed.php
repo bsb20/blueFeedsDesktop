@@ -15,6 +15,7 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 	$url=$row["url"];
 	$title=$row["title"];
 	$date=$row["date"];
+	$FUID=$row["FUID"];
     }
 //$xml =simplexml_load_file($url);
 	$rss="<li style='margin-top: 20px;' class='newsfeed-item'>
@@ -26,6 +27,12 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 					</p>							
 				</div>
 			</a>
+			<form action='articleDelete.php' method='post'>
+				<input style='display:none' type='text' name='FUID' value='$FUID'>
+				<div class='right-button'>	
+					<button class='lightblue-button' type='submit' value=''>Delete Article</button>
+				</div>
+			</form>
 		</li>
 			".$rss;
 }	

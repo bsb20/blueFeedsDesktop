@@ -222,6 +222,11 @@ input {
 	margin-top: 20px;
 	width: 100%;
 }
+
+.right-button {
+	text-align: right;
+}
+
 #delete-button {
 	text-align: center;
 	margin-top: 40px;
