@@ -108,10 +108,6 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 							<div class="add-button">
 								<label>Released to Co-Instructors? <input type="checkbox" name="instructors" value="1" checked /></label>
 							</div>
-							<div id=tagList2>
-								<h3>Tags:</h3>
-								<p><?php echo $tags2 ?></p>
-							</div>
 							<div class="add-button">
 								<button type="submit" class="lightblue-button" value="">Leave Reply</button>
 							</div>

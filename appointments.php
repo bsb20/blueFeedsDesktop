@@ -72,6 +72,12 @@
 						<p>
 						Location: $loc
 						</p>
+						<form method='post' action='apptDelete.php'>
+							<input type='text' name='AUID' value='$AUID' style='display:none'>
+							<div class='add-button'>
+							<button type='submit' class='lightblue-button' value=''>Delete Appointment</button>
+							</div>
+						</form>
 					</div>
 					";		
 							$numAppt++;
@@ -100,6 +106,12 @@
 						<p>
 						Location: $loc
 						</p>
+						<form method='post' action='apptDelete.php'>
+							<input type='text' name='AUID' value='$AUID' style='display:none'>
+							<div class='add-button'>
+							<button type='submit' class='lightblue-button' value=''>Delete Appointment</button>
+							</div>
+						</form>
 					</div>";				
 							$numAppt++;
 						}				
@@ -126,6 +138,12 @@
 						<p>
 						Location: $loc
 						</p>
+						<form method='post' action='apptDelete.php'>
+							<input type='text' name='AUID' value='$AUID' style='display:none'>
+							<div class='add-button'>
+							<button type='submit' class='lightblue-button' value=''>Delete Appointment</button>
+							</div>
+						</form>
 					</div>";	
 							$numAppt++;
 						}				
@@ -151,6 +169,12 @@
 						<p>
 						Location: $loc
 						</p>
+						<form method='post' action='apptDelete.php'>
+							<input type='text' name='AUID' value='$AUID' style='display:none'>
+							<div class='add-button'>
+							<button type='submit' class='lightblue-button' value=''>Delete Appointment</button>
+							</div>
+						</form>
 					</div>";				
 							$numAppt++;
 						}				
