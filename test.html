@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script>
+	$(document).ready(function(){
+	    $("#fileProxy").click(function(){
+		$("#photo").click();
+		alert("Click");
+	    })    
+	});
+
+</script>
+</head>
+<body>
+    <button id="fileProxy">Choose photo</button>
+    <form enctype="multipart/form-data" method="post" action="photoUpload.php">
+         <input type="file" name="photo" id="photo" accept="image/*" style="display:none">
+         <input id="submitPhoto" type="submit" value="Upload photo">
+    </form>
+</body>
+</html>

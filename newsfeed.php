@@ -17,7 +17,6 @@ for($i=0; $i<mysqli_num_rows($result); $i++){
 	$date=$row["date"];
 	$FUID=$row["FUID"];
     }
-//$xml =simplexml_load_file($url);
 	$rss="<li style='margin-top: 20px;' class='newsfeed-item'>
 			<a href=$url>
 				<div class='clearfix'>
